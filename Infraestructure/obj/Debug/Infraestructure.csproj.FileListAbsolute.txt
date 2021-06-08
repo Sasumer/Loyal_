@@ -1,0 +1,42 @@
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\bin\Debug\Infraestructure.dll
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\bin\Debug\Infraestructure.pdb
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\obj\Debug\Infraestructure.csprojAssemblyReference.cache
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\obj\Debug\Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\obj\Debug\Infraestructure.dll
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\obj\Debug\Infraestructure.pdb
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\bin\Debug\Infraestructure.dll.config
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\bin\Debug\EntityFramework.dll
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\bin\Debug\EntityFramework.xml
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\obj\Debug\Infraestructure.csproj.CopyComplete
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\bin\Debug\log4net.dll
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\Infraestructure\bin\Debug\log4net.xml
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\bin\Debug\Infraestructure.dll.config
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\bin\Debug\Infraestructure.dll
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\bin\Debug\Infraestructure.pdb
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\bin\Debug\EntityFramework.dll
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\bin\Debug\log4net.dll
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\bin\Debug\EntityFramework.xml
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\bin\Debug\log4net.xml
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\obj\Debug\Infraestructure.csprojAssemblyReference.cache
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\obj\Debug\Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\obj\Debug\Infraestructure.csproj.CopyComplete
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\obj\Debug\Infraestructure.dll
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\Infraestructure\obj\Debug\Infraestructure.pdb
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\bin\Debug\Infraestructure.dll.config
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\bin\Debug\Infraestructure.dll
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\bin\Debug\Infraestructure.pdb
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\bin\Debug\EntityFramework.dll
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\bin\Debug\log4net.dll
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\bin\Debug\EntityFramework.xml
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\bin\Debug\log4net.xml
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\obj\Debug\Infraestructure.csprojAssemblyReference.cache
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\obj\Debug\Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\obj\Debug\Infraestructure.csproj.CopyComplete
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\obj\Debug\Infraestructure.dll
+C:\Users\Hogar\Documents\Proyecto\Infraestructure\obj\Debug\Infraestructure.pdb

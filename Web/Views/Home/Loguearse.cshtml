@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+
+<body id="logeobody">
+    <div id="Recuadro">
+        <div id="imagen">
+            <img id="imagen" src="~/Content/logo.png">
+        </div>
+        <div id="bienvenida">
+            <p>Welcome Back!</p>
+        </div>
+        <div>
+            <form id="Cuest">
+                <input class="Ingreso" type="text" value="Email">
+                <input class="Ingreso" type="text" value="Password">
+                <div id="remem">
+                    <input id="me" type="checkbox">
+                    <label>Remember me</label>
+                    <label id="pw"><a href="#">Forgot Password</a></label>
+                </div>
+            </form>
+        </div>
+        <form>
+            <div id="botones">
+                <button class="boton" id="login" type="button" value="Login">@Html.ActionLink("Nuevo", "Datos")</button>
+                <button class="boton" type="button">Sign up</button>
+            </div>
+        </form>
+
+        <div id="Term">
+            <label>Copr. 2000, 2016 Cofalia Informática SL Todos los derechos reservados.</label>
+        </div>
+    </div>
+</body>

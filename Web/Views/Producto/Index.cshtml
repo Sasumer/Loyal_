@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Infraestructure.Models.PRODUCTO>
+
+@{
+    ViewBag.Title = "Producto";
+}
+
+<h2 class="text-info">Productos</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+@*<h3>Cantidad total de productos registrados:</h3> 
+
+<h3>Cantidad de salidas registradas en el día:</h3>
+
+<h3>Cantidad de entradas registradas en el día: </h3>*@
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Cantidad total de productos registrados:
+        <span class="badge bg-primary rounded-pill">11</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Cantidad de salidas registradas en el día:
+        <span class="badge bg-primary rounded-pill">7</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Cantidad de entradas registradas en el día:
+        <span class="badge bg-primary rounded-pill">4</span>
+    </li>
+</ul>
+<br />
+<h2 class="text-danger">Lista de Productos</h2>
+<table class="table">
+    <tr class="text-danger">
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </th>
+        <th>
+            @* m en MINUSCULA: Caracteristicas del modelo, atributos. *@
+            @Html.DisplayNameFor(model => model.PRECIO_VENTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CANTIDAD_MINIMA)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.PHOTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CANTIDAD_MINIMA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LOG_ACTIVO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_USUARIO_INGRESA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_AGREGA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_USUARIO_EDITA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_EDITA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_VENCIMIENTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COSTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_TIPO_PRODUCTO)
+        </th>*@
+        <th></th>
+    </tr>
+    @* M en MAYUSCULA: Son los valores. Es la lista de los registros que obtuvo de la BD.*@
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DESCRIPCION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRECIO_VENTA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CANTIDAD_MINIMA)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.PHOTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CANTIDAD_MINIMA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOG_ACTIVO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_USUARIO_INGRESA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_AGREGA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_USUARIO_EDITA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_EDITA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_VENCIMIENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.COSTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_TIPO_PRODUCTO)
+                </td>*@
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { /*id=item.ID */ }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Eliminar", "Delete", new { /*id=item.ID */ })
+            </td>
+        </tr>
+    }
+
+</table>

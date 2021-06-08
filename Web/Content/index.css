@@ -1,0 +1,81 @@
+#logeobody{
+    height: 100%;
+    background: linear-gradient(70deg, #e49968, #f9eed7);
+}
+#Recuadro{
+    margin-left: 31%;
+    margin-top: 25px;
+    margin-block-end: 40px;
+    width: 703px;
+    height: 880px;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: grey;
+    border-radius: 2em;
+}
+#imagen{
+    margin-top: 10%;
+    height: 200px;
+    width: 450px;
+}
+#bienvenida{
+    margin-top: 10%;
+    
+}
+#Cuest{
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+
+}
+.Ingreso{
+    margin-top: 7%;
+    width: 400px;
+    border: 0;
+    color: grey;
+    border-bottom: 3px solid #41a58c;
+}
+#me{
+    height: 15px;
+    width: 15px;
+    border-color: grey;
+}
+#remem{
+    margin-top: 5%;
+}
+#pw{
+    margin-left: 36%;
+    color: grey;
+}
+
+#pw a{
+    color: grey;
+}
+
+
+#botones{
+    margin-top: 11%;
+      display: flex;
+}
+.boton{
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+    margin-left: 7%;
+    border: 2px solid #fe787e;
+}
+#login{
+    margin-left: 0;
+    background-color: #fe787e;
+    border: 0;
+    color: white;
+}
+#Term{
+   margin-top: 23%;
+   font-size: x-small;
+
+}

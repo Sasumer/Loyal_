@@ -1,0 +1,42 @@
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\bin\Debug\ApplicationCore.dll
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\bin\Debug\ApplicationCore.pdb
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\bin\Debug\Infraestructure.dll
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\bin\Debug\Infraestructure.pdb
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.csproj.CopyComplete
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.dll
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.pdb
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\bin\Debug\log4net.dll
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\bin\Debug\EntityFramework.dll
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\bin\Debug\Infraestructure.dll.config
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\bin\Debug\log4net.xml
+C:\Users\adisa\Desktop\UTN\Progra en ambiente web II (Lunes)\Proyecto Amanda-Merlín\Proyecto\ApplicationCore\bin\Debug\EntityFramework.xml
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\bin\Debug\ApplicationCore.dll
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\bin\Debug\ApplicationCore.pdb
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\bin\Debug\Infraestructure.dll
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\bin\Debug\log4net.dll
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\bin\Debug\EntityFramework.dll
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\bin\Debug\Infraestructure.pdb
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\bin\Debug\Infraestructure.dll.config
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\bin\Debug\log4net.xml
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\bin\Debug\EntityFramework.xml
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.csproj.CopyComplete
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.dll
+C:\Users\Hogar\Downloads\Proyecto\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.pdb
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\bin\Debug\ApplicationCore.dll
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\bin\Debug\ApplicationCore.pdb
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\bin\Debug\Infraestructure.dll
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\bin\Debug\log4net.dll
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\bin\Debug\EntityFramework.dll
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\bin\Debug\Infraestructure.pdb
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\bin\Debug\Infraestructure.dll.config
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\bin\Debug\log4net.xml
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\bin\Debug\EntityFramework.xml
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.csproj.CopyComplete
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.dll
+C:\Users\Hogar\Documents\Proyecto\ApplicationCore\obj\Debug\ApplicationCore.pdb
