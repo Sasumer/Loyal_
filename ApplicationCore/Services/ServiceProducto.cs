@@ -17,7 +17,7 @@ namespace ApplicationCore.Services
             return repository.GetProducto();
         }
 
-        public PRODUCTO GetProductoByID(int id)
+        public PRODUCTO GetProductoByID(String id)
         {
             IRepositoryProducto repository = new RepositoryProducto();
             return repository.GetProductoByID(id);

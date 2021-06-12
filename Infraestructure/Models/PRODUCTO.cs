@@ -25,7 +25,7 @@ namespace Infraestructure.Models
         public string ID { get; set; }
         public Nullable<decimal> PRECIO_VENTA { get; set; }
         public string DESCRIPCION { get; set; }
-        public string PHOTO { get; set; }
+        public byte[] PHOTO { get; set; }
         public Nullable<int> CANTIDAD_MINIMA { get; set; }
         public Nullable<bool> LOG_ACTIVO { get; set; }
         public string ID_USUARIO_INGRESA { get; set; }

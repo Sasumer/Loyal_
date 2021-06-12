@@ -1,23 +1,22 @@
-﻿
+﻿using Infraestructure.Models;
 using Infraestructure.Utils;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Infraestructure.Models;
 
 namespace Infraestructure.Repository
 {
-    public class RepositoryProducto : IRepositoryProducto
+    public class RepositoryEncFactura : IRepositoryEncFactura
     {
-        public IEnumerable<PRODUCTO> GetProducto()
+        public IEnumerable<ENC_FACTURA> GetEncFactura()
         {
             try
             {
-                IEnumerable<PRODUCTO> lista = null;
+                IEnumerable<ENC_FACTURA> lista = null;
                 using (MyContext ctx = new MyContext())
                 {
                     //LazyLoadingEnabled: esto va cargando solo lo que es requerido, 
@@ -25,7 +24,7 @@ namespace Infraestructure.Repository
                     ctx.Configuration.LazyLoadingEnabled = false;
                     //Esto es un "Select * from Autor".
                     //lista = ctx.PRODUCTO.ToList<PRODUCTO>();
-                    lista = ctx.PRODUCTO.Include(x => x.TIPO_PRODUCTO).ToList();
+                    lista = ctx.ENC_FACTURA.Include(x => x.TIPO_FACTURA).ToList();
                 }
                 return lista;
                 //para excepciones de actualizacion (ambos catch se guardarn en C:/temp)
@@ -44,17 +43,16 @@ namespace Infraestructure.Repository
             }
         }
 
-        public PRODUCTO GetProductoByID(string id)
+        public ENC_FACTURA GetEncFacturaByID(int id)
         {
-            PRODUCTO oPRODUCTO = null;
+            ENC_FACTURA oENC_FACTURA = null;
             using (MyContext ctx = new MyContext())
             {
                 ctx.Configuration.LazyLoadingEnabled = false;
-                oPRODUCTO = ctx.PRODUCTO.
+                oENC_FACTURA = ctx.ENC_FACTURA.
                     Where(p => p.ID == id).
-                    Include(t => t.TIPO_PRODUCTO).
-                    Include(p => p.PROVEEDOR).
-                    Include(u => u.PRODUCTO_UBICACION).
+                    Include(t => t.TIPO_FACTURA).
+                    Include(p => p.USUARIO).
                     FirstOrDefault();
                 //*** 1. Sintaxis LINQ Query *** https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations
                 //(prof, video) Tiene una sitaxis muy similar a SQL. Desventaja: tengo que darle el formato que se espera
@@ -77,7 +75,8 @@ namespace Infraestructure.Repository
                 //oAutor = ctx.Autor.Where(x => x.IdAutor == id).First<Autor>();
                 //La expresión lambda es una forma más corta de representar un método anónimo utilizando una sintaxis especial.
             }
-            return oPRODUCTO;
+            return oENC_FACTURA;
         }
     }
+    
 }

@@ -27,7 +27,7 @@
     <Property Name="ID" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="PRECIO_VENTA" Type="money" />
     <Property Name="DESCRIPCION" Type="varchar" MaxLength="255" />
-    <Property Name="PHOTO" Type="varchar" MaxLength="255" />
+    <Property Name="PHOTO" Type="varbinary(max)" />
     <Property Name="CANTIDAD_MINIMA" Type="int" />
     <Property Name="LOG_ACTIVO" Type="bit" />
     <Property Name="ID_USUARIO_INGRESA" Type="varchar" MaxLength="20" />
@@ -246,7 +246,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PRODUCTO_UBICACION_PRODUCTO">
+  <Association Name="FK_PRODUCTO_UBICACION_PRODUCTO1">
     <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
     <End Role="PRODUCTO_UBICACION" Type="Self.PRODUCTO_UBICACION" Multiplicity="*" />
     <ReferentialConstraint>
@@ -258,7 +258,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PRODUCTO_UBICACION_UBICACION">
+  <Association Name="FK_PRODUCTO_UBICACION_UBICACION1">
     <End Role="UBICACION" Type="Self.UBICACION" Multiplicity="1" />
     <End Role="PRODUCTO_UBICACION" Type="Self.PRODUCTO_UBICACION" Multiplicity="*" />
     <ReferentialConstraint>
@@ -415,11 +415,11 @@
       <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
     </AssociationSet>
-    <AssociationSet Name="FK_PRODUCTO_UBICACION_PRODUCTO" Association="Self.FK_PRODUCTO_UBICACION_PRODUCTO">
+    <AssociationSet Name="FK_PRODUCTO_UBICACION_PRODUCTO1" Association="Self.FK_PRODUCTO_UBICACION_PRODUCTO1">
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
       <End Role="PRODUCTO_UBICACION" EntitySet="PRODUCTO_UBICACION" />
     </AssociationSet>
-    <AssociationSet Name="FK_PRODUCTO_UBICACION_UBICACION" Association="Self.FK_PRODUCTO_UBICACION_UBICACION">
+    <AssociationSet Name="FK_PRODUCTO_UBICACION_UBICACION1" Association="Self.FK_PRODUCTO_UBICACION_UBICACION1">
       <End Role="UBICACION" EntitySet="UBICACION" />
       <End Role="PRODUCTO_UBICACION" EntitySet="PRODUCTO_UBICACION" />
     </AssociationSet>

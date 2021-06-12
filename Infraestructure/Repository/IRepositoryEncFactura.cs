@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationCore.Services
+namespace Infraestructure.Repository
 {
-    public interface IServiceProducto
+    public interface IRepositoryEncFactura
     {
-        IEnumerable<PRODUCTO> GetProducto();
-        PRODUCTO GetProductoByID(String id);
-
+        IEnumerable<ENC_FACTURA> GetEncFactura();
+        ENC_FACTURA GetEncFacturaByID(int id);
         //void DeleteLibro(int id);
         //Libro Save(Libro libro, string[] selectedCategorias);
     }

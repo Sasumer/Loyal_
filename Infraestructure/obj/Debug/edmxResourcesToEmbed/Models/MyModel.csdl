@@ -33,7 +33,7 @@
     <Property Name="ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PRECIO_VENTA" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="PHOTO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PHOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="CANTIDAD_MINIMA" Type="Int32" />
     <Property Name="LOG_ACTIVO" Type="Boolean" />
     <Property Name="ID_USUARIO_INGRESA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -45,7 +45,7 @@
     <Property Name="ID_TIPO_PRODUCTO" Type="Int32" />
     <NavigationProperty Name="DETALLE_FACTURA" Relationship="Self.FK_DETALLE_FACTURA_PRODUCTO" FromRole="PRODUCTO" ToRole="DETALLE_FACTURA" />
     <NavigationProperty Name="TIPO_PRODUCTO" Relationship="Self.FK_PRODUCTO_TIPO_PRODUCTO" FromRole="PRODUCTO" ToRole="TIPO_PRODUCTO" />
-    <NavigationProperty Name="PRODUCTO_UBICACION" Relationship="Self.FK_PRODUCTO_UBICACION_PRODUCTO" FromRole="PRODUCTO" ToRole="PRODUCTO_UBICACION" />
+    <NavigationProperty Name="PRODUCTO_UBICACION" Relationship="Self.FK_PRODUCTO_UBICACION_PRODUCTO1" FromRole="PRODUCTO" ToRole="PRODUCTO_UBICACION" />
     <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_EDITA" FromRole="PRODUCTO" ToRole="USUARIO" />
     <NavigationProperty Name="USUARIO1" Relationship="Self.FK_USUARIO_INGRESA" FromRole="PRODUCTO" ToRole="USUARIO" />
     <NavigationProperty Name="PROVEEDOR" Relationship="Self.PRODUCTO_PROVEEDOR" FromRole="PRODUCTO" ToRole="PROVEEDOR" />
@@ -58,8 +58,8 @@
     <Property Name="ID_PRODUCTO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ID_UBICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CANTIDAD" Type="Int32" />
-    <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_PRODUCTO_UBICACION_PRODUCTO" FromRole="PRODUCTO_UBICACION" ToRole="PRODUCTO" />
-    <NavigationProperty Name="UBICACION" Relationship="Self.FK_PRODUCTO_UBICACION_UBICACION" FromRole="PRODUCTO_UBICACION" ToRole="UBICACION" />
+    <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_PRODUCTO_UBICACION_PRODUCTO1" FromRole="PRODUCTO_UBICACION" ToRole="PRODUCTO" />
+    <NavigationProperty Name="UBICACION" Relationship="Self.FK_PRODUCTO_UBICACION_UBICACION1" FromRole="PRODUCTO_UBICACION" ToRole="UBICACION" />
   </EntityType>
   <EntityType Name="PROVEEDOR">
     <Key>
@@ -135,7 +135,7 @@
     <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="DETALLE_FACTURA" Relationship="Self.FK_DETALLE_FACTURA_UBICACION" FromRole="UBICACION" ToRole="DETALLE_FACTURA" />
-    <NavigationProperty Name="PRODUCTO_UBICACION" Relationship="Self.FK_PRODUCTO_UBICACION_UBICACION" FromRole="UBICACION" ToRole="PRODUCTO_UBICACION" />
+    <NavigationProperty Name="PRODUCTO_UBICACION" Relationship="Self.FK_PRODUCTO_UBICACION_UBICACION1" FromRole="UBICACION" ToRole="PRODUCTO_UBICACION" />
   </EntityType>
   <EntityType Name="USUARIO">
     <Key>
@@ -238,7 +238,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PRODUCTO_UBICACION_PRODUCTO">
+  <Association Name="FK_PRODUCTO_UBICACION_PRODUCTO1">
     <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
     <End Role="PRODUCTO_UBICACION" Type="Self.PRODUCTO_UBICACION" Multiplicity="*" />
     <ReferentialConstraint>
@@ -274,7 +274,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PRODUCTO_UBICACION_UBICACION">
+  <Association Name="FK_PRODUCTO_UBICACION_UBICACION1">
     <End Role="UBICACION" Type="Self.UBICACION" Multiplicity="1" />
     <End Role="PRODUCTO_UBICACION" Type="Self.PRODUCTO_UBICACION" Multiplicity="*" />
     <ReferentialConstraint>
@@ -381,7 +381,7 @@
       <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
     </AssociationSet>
-    <AssociationSet Name="FK_PRODUCTO_UBICACION_PRODUCTO" Association="Self.FK_PRODUCTO_UBICACION_PRODUCTO">
+    <AssociationSet Name="FK_PRODUCTO_UBICACION_PRODUCTO1" Association="Self.FK_PRODUCTO_UBICACION_PRODUCTO1">
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
       <End Role="PRODUCTO_UBICACION" EntitySet="PRODUCTO_UBICACION" />
     </AssociationSet>
@@ -393,7 +393,7 @@
       <End Role="USUARIO" EntitySet="USUARIO" />
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
     </AssociationSet>
-    <AssociationSet Name="FK_PRODUCTO_UBICACION_UBICACION" Association="Self.FK_PRODUCTO_UBICACION_UBICACION">
+    <AssociationSet Name="FK_PRODUCTO_UBICACION_UBICACION1" Association="Self.FK_PRODUCTO_UBICACION_UBICACION1">
       <End Role="UBICACION" EntitySet="UBICACION" />
       <End Role="PRODUCTO_UBICACION" EntitySet="PRODUCTO_UBICACION" />
     </AssociationSet>

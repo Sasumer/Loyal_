@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Infraestructure.Models.ENC_FACTURA>
+
+@{
+    ViewBag.Title = "Encabezado de Facturas";
+}
+
+<h2>Encabezado de Facturas</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_USUARIO)
+        </th>
+        @* Esto viene desde el RepositoryLibro *@
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_TIPO_FACTURA)
+        </th>
+        @* Esto viene desde el RepositoryLibro *@
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_FACTURA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_USUARIO)
+        </td>
+        <td>
+                @Html.DisplayFor(modelItem => item.USUARIO.Nombre)
+            </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_TIPO_FACTURA)
+        </td>
+        <td>
+                @Html.DisplayFor(modelItem => item.TIPO_FACTURA.MOVIMIENTO)
+            </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

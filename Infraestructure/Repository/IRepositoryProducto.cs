@@ -10,7 +10,7 @@ namespace Infraestructure.Repository
     public interface IRepositoryProducto
     {
         IEnumerable<PRODUCTO> GetProducto();
-        PRODUCTO GetProductoByID(int id);
+        PRODUCTO GetProductoByID(String id);
         //void DeleteLibro(int id);
         //Libro Save(Libro libro, string[] selectedCategorias);
     }
