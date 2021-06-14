@@ -14,7 +14,7 @@ namespace Infraestructure.Models
         public Nullable<decimal> PRECIO_VENTA { get; set; }
         [Display(Name = "Descripcion")]
         public string DESCRIPCION { get; set; }
-         [Display(Name = "Imagen Producto")]
+        [Display(Name = "Imagen Producto")]
         public byte[] PHOTO { get; set; }
         //public string PHOTO { get; set; }
         [Display(Name = "Cantidad Minima")]
@@ -46,6 +46,16 @@ namespace Infraestructure.Models
         public virtual ICollection<PRODUCTO_UBICACION> PRODUCTO_UBICACION { get; set; }
 
 
+
+
+
+
+
+
+
+
+
+
         //
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         //public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
@@ -53,11 +63,29 @@ namespace Infraestructure.Models
         //public virtual TIPO_PRODUCTO TIPO_PRODUCTO { get; set; }
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         //public virtual ICollection<PRODUCTO_UBICACION> PRODUCTO_UBICACION { get; set; }
-        public virtual USUARIO USUARIO { get; set; }
+        //public virtual USUARIO USUARIO { get; set; }
         public virtual USUARIO USUARIO1 { get; set; }
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
         [Display(Name = "Proveedor(es)")]
         public virtual ICollection<PROVEEDOR> PROVEEDOR { get; set; }
+    }
+
+    internal partial class ProveedorMetadata
+    {
+
+        [Display(Name = "Nombre de la Organizacion")]
+        public string NOMBRE_ORGAN { get; set; }
+
+        [Display(Name = "Direccion")]
+        public string DIRECCION { get; set; }
+
+        [Display(Name = "Pais")]
+        public string PAIS { get; set; }
+
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
+
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
+
     }
 }
