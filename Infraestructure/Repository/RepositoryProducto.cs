@@ -47,6 +47,7 @@ namespace Infraestructure.Repository
         public PRODUCTO GetProductoByID(string id)
         {
             PRODUCTO oPRODUCTO = null;
+            UBICACION uBICACION = null;
             using (MyContext ctx = new MyContext())
             {
                 ctx.Configuration.LazyLoadingEnabled = false;
@@ -55,7 +56,21 @@ namespace Infraestructure.Repository
                     Include(t => t.TIPO_PRODUCTO).
                     Include(p => p.PROVEEDOR).
                     Include(u => u.PRODUCTO_UBICACION).
+                    Include("PRODUCTO_UBICACION.UBICACION").
                     FirstOrDefault();
+
+
+
+              //  uBICACION = ctx.UBICACION.Where(c => c.PRODUCTO_UBICACION == oPRODUCTO.PRODUCTO_UBICACION).;
+
+              
+
+
+
+
+
+
+
                 //*** 1. Sintaxis LINQ Query *** https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations
                 //(prof, video) Tiene una sitaxis muy similar a SQL. Desventaja: tengo que darle el formato que se espera
                 //ventaja: se puede filtrar más. ordenarlo.
