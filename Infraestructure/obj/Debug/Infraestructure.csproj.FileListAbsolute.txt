@@ -67,3 +67,4 @@ C:\Users\Hogar\Documents\Proyecto\Loyal_\Infraestructure\bin\Debug\log4net.xml
 C:\Users\Hogar\Documents\Proyecto\Loyal_\Infraestructure\obj\Debug\Infraestructure.csproj.CopyComplete
 C:\Users\Hogar\Documents\Proyecto\Loyal_\Infraestructure\obj\Debug\Infraestructure.dll
 C:\Users\Hogar\Documents\Proyecto\Loyal_\Infraestructure\obj\Debug\Infraestructure.pdb
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Infraestructure\obj\Debug\Infraestructure.csprojAssemblyReference.cache
