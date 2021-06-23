@@ -24,7 +24,7 @@ namespace Infraestructure.Repository
                     ctx.Configuration.LazyLoadingEnabled = false;
                     //Esto es un "Select * from Autor".
                     //lista = ctx.PRODUCTO.ToList<PRODUCTO>();
-                    lista = ctx.ENC_FACTURA.Include(x => x.TIPO_FACTURA).ToList();
+                    lista = ctx.ENC_FACTURA.Include(x => x.TIPO_FACTURA).Include(u => u.USUARIO).ToList();
                 }
                 return lista;
                 //para excepciones de actualizacion (ambos catch se guardarn en C:/temp)
@@ -52,7 +52,7 @@ namespace Infraestructure.Repository
                 oENC_FACTURA = ctx.ENC_FACTURA.
                     Where(p => p.ID == id).
                     Include(t => t.TIPO_FACTURA).
-                    Include(p => p.USUARIO).
+                    Include(u => u.USUARIO).
                     FirstOrDefault();
                 //*** 1. Sintaxis LINQ Query *** https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations
                 //(prof, video) Tiene una sitaxis muy similar a SQL. Desventaja: tengo que darle el formato que se espera

@@ -17,15 +17,9 @@
         <th>
             @Html.DisplayNameFor(model => model.FECHA)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ID_USUARIO)
-        </th>
         @* Esto viene desde el RepositoryLibro *@
         <th>
             @Html.DisplayNameFor(model => model.USUARIO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ID_TIPO_FACTURA)
         </th>
         @* Esto viene desde el RepositoryLibro *@
         <th>
@@ -43,14 +37,9 @@
             @Html.DisplayFor(modelItem => item.FECHA)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_USUARIO)
+            @Html.DisplayFor(modelItem => item.USUARIO.Nombre)
         </td>
-        <td>
-                @Html.DisplayFor(modelItem => item.USUARIO.Nombre)
-            </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID_TIPO_FACTURA)
-        </td>
+      
         <td>
                 @Html.DisplayFor(modelItem => item.TIPO_FACTURA.MOVIMIENTO)
             </td>

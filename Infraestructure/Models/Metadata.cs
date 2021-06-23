@@ -88,4 +88,29 @@ namespace Infraestructure.Models
         public virtual ICollection<USUARIO> USUARIO { get; set; }
 
     }
+
+    internal partial class EncFacturaMetadata
+    {
+
+        [Display(Name = "Numero De Factura")]
+        public int ID { get; set; }
+        [Display(Name = "Fecha")]
+        public string FECHA { get; set; }
+        [Display(Name = "Usuario")]
+        public string ID_USUARIO { get; set; }
+        [Display(Name = "Tipo de Factura")]
+        public int ID_TIPO_FACTURA { get; set; }
+        public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
+        public virtual TIPO_FACTURA TIPO_FACTURA { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
+
+    }
+
+
+
+
+
+
+
+
 }

@@ -30,7 +30,7 @@
                         <ul>
                             @foreach (var c in Model.PRODUCTO_UBICACION)
                             {
-                                <li>@c.ID_UBICACION</li>
+                                <li>@Html.DisplayFor(modelItem=>c.UBICACION.DESCRIPCION)</li> 
                             }
                         </ul>
                     </div>
