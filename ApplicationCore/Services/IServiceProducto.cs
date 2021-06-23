@@ -10,9 +10,12 @@ namespace ApplicationCore.Services
     public interface IServiceProducto
     {
         IEnumerable<PRODUCTO> GetProducto();
+        IEnumerable<string> GetProductoNombres();
+        IEnumerable<PRODUCTO> GetProductoByDescripcion(String descripcion);
+        IEnumerable<PRODUCTO> GetProductoByProveedor(int idProveedor); //GetLibroByAutor
         PRODUCTO GetProductoByID(String id);
 
-        //void DeleteLibro(int id);
-        //Libro Save(Libro libro, string[] selectedCategorias);
+        void DeleteProducto(int id);
+        PRODUCTO Save(PRODUCTO producto, string[] selectedProveedores, string[] selectedUbicaciones);
     }
 }

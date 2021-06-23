@@ -43,11 +43,22 @@ namespace Infraestructure.Repository
                 throw;
             }
         }
+        public IEnumerable<PRODUCTO> GetProductoByDescripcion(string descripcion)
+        {
+            IEnumerable<PRODUCTO> lista = null;
+            using (MyContext ctx = new MyContext())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                lista = ctx.PRODUCTO.ToList().
+                    FindAll(l => l.DESCRIPCION.ToLower().Contains(descripcion.ToLower()));
+            }
+            return lista;
+        }
 
         public PRODUCTO GetProductoByID(string id)
         {
             PRODUCTO oPRODUCTO = null;
-            UBICACION uBICACION = null;
+            UBICACION uBICACION = null; //NUEVO*******************************************************************
             using (MyContext ctx = new MyContext())
             {
                 ctx.Configuration.LazyLoadingEnabled = false;
@@ -55,21 +66,13 @@ namespace Infraestructure.Repository
                     Where(p => p.ID == id).
                     Include(t => t.TIPO_PRODUCTO).
                     Include(p => p.PROVEEDOR).
-                    Include(u => u.PRODUCTO_UBICACION).
+                    Include(u => u.PRODUCTO_UBICACION). //NUEVO******************
                     Include("PRODUCTO_UBICACION.UBICACION").
                     FirstOrDefault();
 
 
 
-              //  uBICACION = ctx.UBICACION.Where(c => c.PRODUCTO_UBICACION == oPRODUCTO.PRODUCTO_UBICACION).;
-
-              
-
-
-
-
-
-
+                //  uBICACION = ctx.UBICACION.Where(c => c.PRODUCTO_UBICACION == oPRODUCTO.PRODUCTO_UBICACION).;
 
                 //*** 1. Sintaxis LINQ Query *** https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations
                 //(prof, video) Tiene una sitaxis muy similar a SQL. Desventaja: tengo que darle el formato que se espera
@@ -94,5 +97,87 @@ namespace Infraestructure.Repository
             }
             return oPRODUCTO;
         }
+        //le falta:
+        public IEnumerable<PRODUCTO> GetProductoByProveedor(int idProveedor)
+        {
+            IEnumerable<PRODUCTO> lista = null;
+            //using (MyContext ctx = new MyContext())
+            //{
+            //    ctx.Configuration.LazyLoadingEnabled = false;
+            //    lista = ctx.PRODUCTO.Where(l => l.PROVEEDOR == idAutor).ToList();
+            //}
+            return lista;
+        }
+
+        public PRODUCTO Save(PRODUCTO producto, string[] selectedProveedores, string[] selectedUbicaciones)
+        {
+            int retorno = 0;
+            PRODUCTO oProducto = null;
+
+            using (MyContext ctx = new MyContext())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                oProducto = GetProductoByID((String)producto.ID);
+                IRepositoryProveedor _RepositoryProveedor = new RepositoryProveedor();
+
+                if (oProducto == null)
+                {
+
+                    //Insertar
+                    if (selectedProveedores != null)
+                    {
+
+                        producto.PROVEEDOR = new List<PROVEEDOR>();
+                        foreach (var proveedor in selectedProveedores)
+                        { //LOGICA PARA INSERTAR CATEGORIAS===========================================================
+                            var proveedorToAdd = _RepositoryProveedor.GetPROVEEDORByID(int.Parse(proveedor));
+                            ctx.PROVEEDOR.Attach(proveedorToAdd);
+                            //Se hace un Attach porque sino, EF intentará esa categoria como nueva,
+                            //le indicamos que ya existe, que no la cree. Y la agregamos al libro.
+                            producto.PROVEEDOR.Add(proveedorToAdd);// asociar a la categoría existente con el libro
+                                                                   //FIN =========================================================================================
+
+                        }
+                    }
+                    ctx.PRODUCTO.Add(producto);
+                    //SaveChanges
+                    //guarda todos los cambios realizados en el contexto de la base de datos.
+                    retorno = ctx.SaveChanges();
+                    //retorna número de filas afectadas
+                }
+                else
+                {
+                    //(mio) Ejemplo: debe sincrozinar cuales son nuevas, agregar y eliminar.
+                    //Registradas: 1,2,3
+                    //Actualizar: 1,3,4
+
+                    //PRIMERO Actualizar Libro
+                    ctx.PRODUCTO.Add(libro);
+                    ctx.Entry(libro).State = EntityState.Modified;
+                    retorno = ctx.SaveChanges();
+                    //SEGUNDO Actualizar Categorias ====================================================================
+                    var selectedCategoriasID = new HashSet<string>(selectedCategorias);
+                    if (selectedCategorias != null)
+                    {
+                        //Obtengo las categorias que ya tiene:
+                        ctx.Entry(libro).Collection(p => p.Categoria).Load();
+                        //Aqui que sincronice, busque que hay nuevo, agregar y eliminar.
+                        var newCategoriaForLibro = ctx.Categoria
+                         .Where(x => selectedCategoriasID.Contains(x.IdCategoria.ToString())).ToList();
+                        //hace las categorias en un listado
+                        libro.Categoria = newCategoriaForLibro;
+
+                        ctx.Entry(libro).State = EntityState.Modified;
+                        retorno = ctx.SaveChanges(); //se guarda en el contexto
+                    }
+                }
+            }
+
+            if (retorno >= 0)
+                oLibro = GetLibroByID((int)libro.IdLibro);
+
+            return oLibro;
+        }
+
     }
 }
