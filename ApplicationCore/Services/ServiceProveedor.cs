@@ -21,5 +21,14 @@ namespace ApplicationCore.Services
             IRepositoryProveedor repository = new RepositoryProveedor();
             return repository.GetPROVEEDORByID(id);
         }
+
+        public PROVEEDOR Save(PROVEEDOR pROVEEDOR, String[] selectedUsuarios)
+        {
+            IRepositoryProveedor repository = new RepositoryProveedor();
+            return repository.Save(pROVEEDOR, selectedUsuarios);
+        }
+
+
+
     }
 }

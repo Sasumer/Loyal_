@@ -47,7 +47,6 @@ namespace Infraestructure.Repository
         public PRODUCTO GetProductoByID(string id)
         {
             PRODUCTO oPRODUCTO = null;
-            UBICACION uBICACION = null;
             using (MyContext ctx = new MyContext())
             {
                 ctx.Configuration.LazyLoadingEnabled = false;
