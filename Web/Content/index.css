@@ -25,7 +25,8 @@
     margin-top: 10%;
     
 }
-#Cuest{
+.Cuest{
+   
     margin-top: 10%;
     display: flex;
     flex-direction: column;
@@ -79,3 +80,9 @@
    font-size: x-small;
 
 }
+
+#prueba1{
+    height:15px;
+
+}
+

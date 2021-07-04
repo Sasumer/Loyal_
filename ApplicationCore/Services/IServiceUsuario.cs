@@ -11,5 +11,7 @@ namespace ApplicationCore.Services
     {
         IEnumerable<USUARIO> GetUSUARIO();
         USUARIO GetUSUARIOByID(int id);
+
+        USUARIO GetLoginUsuario(string id, string password);
     }
 }

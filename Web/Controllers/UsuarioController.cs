@@ -144,5 +144,88 @@ namespace Web.Controllers
                 return View();
             }
         }
+
+        public ActionResult Login(USUARIO usuario)
+        {
+            IServiceUsuario _ServiceUsuario = new ServiceUsuario();
+            USUARIO oUsuario = null;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    oUsuario = _ServiceUsuario.GetLoginUsuario(usuario.ID, usuario.contrasenna);
+
+                    if (oUsuario != null)
+                    {
+                        Session["User"] = oUsuario;
+                        Log.Info($"Accede {oUsuario.Nombre} {oUsuario.Apellido1} con el rol {oUsuario.USUARIO_ROL}");
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        Log.Warn($"{usuario.ID} se intentó conectar  y falló");
+                        ViewBag.NotificationMessage = Util.SweetAlertHelper.Mensaje("Login", "Error al autenticarse", SweetAlertMessageType.warning);
+
+                    }
+                }
+
+                return View("Home", "Loguearse");
+            }
+            catch (Exception ex)
+            {
+                // Salvar el error en un archivo 
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                // Pasar el Error a la página que lo muestra
+                TempData["Message"] = ex.Message;
+                TempData.Keep();
+                return RedirectToAction("Default", "Error");
+            }
+        }
+        public ActionResult UnAuthorized()
+        {
+            try
+            {
+                ViewBag.Message = "No autorizado";
+
+                if (Session["User"] != null)
+                {
+                    USUARIO oUsuario = Session["User"] as USUARIO;
+                    Log.Warn($"El usuario {oUsuario.Nombre} {oUsuario.Apellido1} con el rol {oUsuario.USUARIO_ROL}, intentó acceder una página sin permisos  ");
+                }
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // Salvar el error en un archivo 
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                // Pasar el Error a la página que lo muestra
+                TempData["Message"] = ex.Message;
+                TempData["Redirect"] = "Home";
+                TempData["Redirect-Action"] = "Loguearse";
+                return RedirectToAction("Default", "Error");
+            }
+        }
+        public ActionResult Logout()
+        {
+            try
+            {
+                Log.Info("Usuario desconectado!");
+                Session["User"] = null;
+                return RedirectToAction("Index", "Login");
+            }
+            catch (Exception ex)
+            {
+                // Salvar el error en un archivo 
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                // Pasar el Error a la página que lo muestra
+                TempData["Message"] = ex.Message;
+                TempData["Redirect"] = "Home";
+                TempData["Redirect-Action"] = "Loguearse";
+                return RedirectToAction("Default", "Error");
+            }
+        }
+
+
     }
 }

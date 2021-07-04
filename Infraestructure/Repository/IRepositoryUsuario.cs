@@ -22,5 +22,6 @@ namespace Infraestructure.Repository
 
         USUARIO Save(USUARIO USUARIO);
 
+        USUARIO GetLoginUsuario(string id, string password);
     }
 }

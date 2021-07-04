@@ -1,4 +1,5 @@
-﻿using Infraestructure.Models;
+﻿using ApplicationCore.Utils;
+using Infraestructure.Models;
 using Infraestructure.Repository;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,16 @@ namespace ApplicationCore.Services
 {
     public class ServiceUsuario : IServiceUsuario
     {
+        public USUARIO GetLoginUsuario(string id, string password)
+        {
+            IRepositoryUsuario repository = new RepositoryUsuario();
+
+            // Encriptar el password para poder compararlo
+            string crytpPasswd = Cryptography.EncrypthAES(password);
+
+            return repository.GetLoginUsuario(id, crytpPasswd);
+        }
+
         public IEnumerable<USUARIO> GetUSUARIO()
         {
             IRepositoryUsuario repository = new RepositoryUsuario();
@@ -19,7 +30,12 @@ namespace ApplicationCore.Services
         public USUARIO GetUSUARIOByID(int id)
         {
             IRepositoryUsuario repository = new RepositoryUsuario();
-            return repository.GetUSUARIOByID(id);
+            USUARIO oUsuario = repository.GetUSUARIOByID(id);
+            oUsuario.contrasenna = Cryptography.DecrypthAES(oUsuario.contrasenna);
+            return oUsuario;
         }
+
+     
+
     }
 }

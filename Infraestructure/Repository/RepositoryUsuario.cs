@@ -90,6 +90,46 @@ namespace Infraestructure.Repository
             }
         }
 
+
+        public USUARIO GetLoginUsuario(string id, string password)
+        {
+            try
+            {
+                USUARIO oUSUARIO = null;
+                using (MyContext ctx = new MyContext())
+                {
+                    //LazyLoadingEnabled: esto va cargando solo lo que es requerido, 
+                    //pero en este caso quiero una lista de TODO, por eso se pone FALSE.
+                    ctx.Configuration.LazyLoadingEnabled = false;
+                    //Esto es un "Select * from Autor".
+                    //lista = ctx.USUARIO.ToList<USUARIO>();
+                    oUSUARIO = ctx.USUARIO.Where(p => p.ID.Equals(id) && p.contrasenna==password).FirstOrDefault<USUARIO>();
+
+
+
+
+                }
+
+                if (oUSUARIO != null)
+                    oUSUARIO = GetUSUARIOByID(int.Parse(oUSUARIO.ID));
+
+                return oUSUARIO;
+                //para excepciones de actualizacion (ambos catch se guardarn en C:/temp)
+            }
+            catch (DbUpdateException dbEx)
+            {
+                string mensaje = "";
+                Log.Error(dbEx, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                throw new Exception(mensaje);
+            }
+            catch (Exception ex)
+            {
+                string mensaje = "";
+                Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                throw;
+            }
+        }
+
         public USUARIO Save(USUARIO USUARIO)
         {
             throw new NotImplementedException();
