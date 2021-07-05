@@ -143,13 +143,16 @@ namespace Infraestructure.Repository
                         }
                     }
                     //Insertar ubicaciones
+                    
                     if (selectedUbicaciones != null)
                     {
 
                         producto.PRODUCTO_UBICACION = new List<PRODUCTO_UBICACION>();
+                        
+
                         foreach (var ubicaciones in selectedUbicaciones)
                         { //LOGICA PARA INSERTAR CATEGORIAS===========================================================
-                            var ubicacionToAdd = _RepositoryUbicacion.GetUbicacionByID(int.Parse(ubicaciones));
+                            //var ubicacionToAdd = _RepositoryUbicacion.GetUbicacionByID(int.Parse(ubicaciones));
                             PRODUCTO_UBICACION proUbiToAdd = new PRODUCTO_UBICACION();
                             proUbiToAdd.ID_UBICACION = ubicaciones;
                             proUbiToAdd.ID_PRODUCTO = producto.ID;
@@ -159,11 +162,13 @@ namespace Infraestructure.Repository
                             //Se hace un Attach porque sino, EF intentará esa categoria como nueva,
                             //le indicamos que ya existe, que no la cree. Y la agregamos al libro.
                             producto.PRODUCTO_UBICACION.Add(proUbiToAdd);// asociar a la categoría existente con el libro
-                         //FIN =========================================================================================
-
+                                                                         //FIN =========================================================================================
+                            ctx.PRODUCTO_UBICACION.Add(proUbiToAdd);
                         }
                     }
                     ctx.PRODUCTO.Add(producto);
+                   
+                    
                     //SaveChanges
                     //guarda todos los cambios realizados en el contexto de la base de datos.
                     retorno = ctx.SaveChanges();
