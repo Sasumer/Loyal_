@@ -13,5 +13,8 @@ namespace ApplicationCore.Services
         USUARIO GetUSUARIOByID(int id);
 
         USUARIO GetLoginUsuario(string id, string password);
+
+        USUARIO Save(USUARIO uSUARIO, String[] selectedRol);
+
     }
 }

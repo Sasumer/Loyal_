@@ -80,8 +80,26 @@ namespace Web.Controllers
         }
 
         // GET: USUARIO/Create
+        private MultiSelectList listaRols(ICollection<USUARIO_ROL> usuRol)
+        {
+            //Lista de Categorias
+            IServiceRol _ServiceRol = new ServiceRol();
+            IEnumerable<ROL> listaRoles = _ServiceRol.GetROLs();
+            string[] listaRolSelect = null;
+
+            if (usuRol != null)
+            {
+
+                listaRolSelect = usuRol.Select(c => c.ID_ROL+"").ToArray();
+            }
+
+            return new MultiSelectList(listaRoles, "ID", "DESCRIPCION", listaRolSelect);
+
+        }
+
         public ActionResult Create()
         {
+            ViewBag.IdRol = listaRols(null);
             return View();
         }
 
@@ -225,6 +243,42 @@ namespace Web.Controllers
                 return RedirectToAction("Default", "Error");
             }
         }
+
+        [HttpPost]
+        public ActionResult Save(USUARIO uSUARIO, String[] selectedRol)
+        {
+            IServiceUsuario _ServiceUsuario = new ServiceUsuario();
+
+            try
+            {
+                // TODO: Add update logic here
+
+
+
+                if (ModelState.IsValid)
+                {
+                    USUARIO oUSUARIO = _ServiceUsuario.Save(uSUARIO, selectedRol);
+                }
+                else
+                {
+                    // Valida Errores si Javascript está deshabilitado
+                    Util.Util.ValidateErrors(this);
+                    ViewBag.IdRol = listaRols(uSUARIO.USUARIO_ROL);
+                    return View("Create", uSUARIO);
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["Message"] = "Error al procesar los datos! " + ex.Message;
+                TempData["Redirect"] = "USUARIO";
+                TempData["Redirect-Action"] = "Index";
+                // Redireccion a la captura del Error
+                return RedirectToAction("Default", "Error");
+            }
+        }
+
 
 
     }

@@ -34,8 +34,13 @@ namespace ApplicationCore.Services
             oUsuario.contrasenna = Cryptography.DecrypthAES(oUsuario.contrasenna);
             return oUsuario;
         }
+        public USUARIO Save(USUARIO uSUARIO, string[] selectedRol)
+        {
+            IRepositoryUsuario repository = new RepositoryUsuario();
+            return repository.Save(uSUARIO, selectedRol);
+        }
 
-     
+       
 
     }
 }

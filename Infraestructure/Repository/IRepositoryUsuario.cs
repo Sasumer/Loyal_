@@ -20,7 +20,7 @@ namespace Infraestructure.Repository
 
         void DeleteUsuario(int id);
 
-        USUARIO Save(USUARIO USUARIO);
+        USUARIO Save(USUARIO USUARIO, string[] selectedRol);
 
         USUARIO GetLoginUsuario(string id, string password);
     }
