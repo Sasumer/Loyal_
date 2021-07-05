@@ -130,61 +130,9 @@ namespace Infraestructure.Repository
             }
         }
 
-        public USUARIO Save(USUARIO usuario, string[] selectedRol)
+        public USUARIO Save(USUARIO USUARIO)
         {
-            int retorno = 0;
-            USUARIO uSUARIO = null;
-
-            using (MyContext ctx = new MyContext())
-            {
-                ctx.Configuration.LazyLoadingEnabled = false;
-                uSUARIO = GetUSUARIOByID(int.Parse(usuario.ID));
-                IRepositoryRol _RepositoryRol = new RepositoryRol();
-
-                if (uSUARIO == null)
-                {
-
-                
-
-                    if (selectedRol != null)
-                    {
-
-                        usuario.USUARIO_ROL = new List<USUARIO_ROL>();
-
-
-                        foreach (var rol in selectedRol)
-                        { //LOGICA PARA INSERTAR CATEGORIAS===========================================================
-                            //var ubicacionToAdd = _RepositoryUbicacion.GetUbicacionByID(int.Parse(ubicaciones));
-                            USUARIO_ROL usuRolToAdd = new USUARIO_ROL();
-                            usuRolToAdd.ID_ROL =int.Parse(rol);
-                            usuRolToAdd.cedula = usuario.ID;
-                            usuRolToAdd.LOG_ACTIVO = true;
-
-                            ctx.USUARIO_ROL.Attach(usuRolToAdd);
-                            //Se hace un Attach porque sino, EF intentará esa categoria como nueva,
-                            //le indicamos que ya existe, que no la cree. Y la agregamos al libro.
-                            usuario.USUARIO_ROL.Add(usuRolToAdd);// asociar a la categoría existente con el libro
-                                                                         //FIN =========================================================================================
-                            ctx.USUARIO_ROL.Add(usuRolToAdd);
-                        }
-                    }
-                    ctx.USUARIO.Add(usuario);
-
-
-                    //SaveChanges
-                    //guarda todos los cambios realizados en el contexto de la base de datos.
-                    retorno = ctx.SaveChanges();
-                    //retorna número de filas afectadas
-                }
-
-            }
-
-            if (retorno >= 0)
-                uSUARIO = GetUSUARIOByID(int.Parse(usuario.ID));
-
-            return uSUARIO;
+            throw new NotImplementedException();
         }
-        //Fin sem 5=========================================
     }
 }
-

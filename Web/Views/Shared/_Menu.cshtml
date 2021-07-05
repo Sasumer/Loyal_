@@ -40,6 +40,51 @@
             <li class="nav-item">
                 @Html.ActionLink("Login", "Loguearse", "Home", null, new { @class = "nav-link" })
             </li>
+
+            @* sem 7====================================================================================================================== *@
+            @{
+                string Nombre = "";
+                string correo_electronico = "Perfil";
+                Infraestructure.Models.USUARIO oUsuario;
+                //Validar si existe en la sesión
+                if (Session["User"] != null)
+                {
+                    oUsuario = (Infraestructure.Models.USUARIO)Session["User"];
+                    if (oUsuario != null) //doble validacion
+                    {
+                        //se asigna la sesion a las variables en este c#
+                        Nombre = $"{oUsuario.Nombre} {oUsuario.Apellido1}";
+                        correo_electronico = oUsuario.correo_electronico;
+                    }
+                }
+            }
+            <li class="nav-item dropdown ">
+                @* Aqui presentamos el email, email no da error porque siempre esta definido como "Perfil" o el del usuario logueado... *@
+                <a class=" btn btn-primary nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@Nombre</a>
+                @* ...pero nombre si debe de ser validado: *@
+                <div class="dropdown-menu">
+                    @if (Session["User"] != null)
+                    {
+                        <div class="dropdown-item">
+                            @* Nombre Usuario *@
+                            Usuario: @correo_electronico
+                        </div>
+                    }
+                    @* Cuando mostrar Login y cuando Logout: *@
+                    <div class="dropdown-divider"></div>
+                    @if (Session["User"] == null)
+                    {
+                        @Html.ActionLink("Login", "Loguearse", "Home", null, new { @class = "dropdown-item" })
+                    }
+                    else
+                    {
+
+                        @Html.ActionLink("Logout", "Logout", "Login", null, new { @class = "dropdown-item " })
+                    }
+
+                </div>
+                @* Fin sem 7================================================================================================================== *@
+            </li>
         </ul>
     </div>
 </nav>
