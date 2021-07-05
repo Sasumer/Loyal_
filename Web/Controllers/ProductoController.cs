@@ -121,7 +121,7 @@ namespace Web.Controllers
                 listaProveedoresSelect = proveedores.Select(c => c.ID).ToArray();
             }
 
-            return new MultiSelectList(listaProveedores, "ID", "NOMBRE", listaProveedoresSelect);
+            return new MultiSelectList(listaProveedores, "ID", "NOMBRE_ORGAN", listaProveedoresSelect);
 
         }
 

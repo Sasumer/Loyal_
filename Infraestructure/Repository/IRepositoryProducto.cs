@@ -14,6 +14,6 @@ namespace Infraestructure.Repository
         IEnumerable<PRODUCTO> GetProductoByDescripcion(String descripcion);
         IEnumerable<PRODUCTO> GetProductoByProveedor(int idProveedor);
         void DeleteProducto(int id);
-        PRODUCTO Save(PRODUCTO libro, string[] selectedCategorias);
+        PRODUCTO Save(PRODUCTO libro, string[] selectedProveedores, string[] selectedUbicaciones);
     }
 }

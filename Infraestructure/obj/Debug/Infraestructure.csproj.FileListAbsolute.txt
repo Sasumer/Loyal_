@@ -67,3 +67,4 @@ C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyect
 C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Infraestructure\obj\Debug\Infraestructure.csproj.CopyComplete
 C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Infraestructure\obj\Debug\Infraestructure.dll
 C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Infraestructure\obj\Debug\Infraestructure.pdb
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Infraestructure\obj\Debug\Infraestructure.csprojAssemblyReference.cache

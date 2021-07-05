@@ -13,6 +13,8 @@ namespace Infraestructure.Repository
 {
     public class RepositoryProducto : IRepositoryProducto
     {
+
+
         public IEnumerable<PRODUCTO> GetProducto()
         {
             try
@@ -58,10 +60,7 @@ namespace Infraestructure.Repository
         public PRODUCTO GetProductoByID(string id)
         {
             PRODUCTO oPRODUCTO = null;
-<<<<<<< HEAD
-            UBICACION uBICACION = null; //NUEVO*******************************************************************
-=======
->>>>>>> main
+            //UBICACION uBICACION = null; 
             using (MyContext ctx = new MyContext())
             {
                 ctx.Configuration.LazyLoadingEnabled = false;
@@ -69,7 +68,7 @@ namespace Infraestructure.Repository
                     Where(p => p.ID == id).
                     Include(t => t.TIPO_PRODUCTO).
                     Include(p => p.PROVEEDOR).
-                    Include(u => u.PRODUCTO_UBICACION). //NUEVO******************
+                    Include(u => u.PRODUCTO_UBICACION).
                     Include("PRODUCTO_UBICACION.UBICACION").
                     FirstOrDefault();
 
@@ -122,11 +121,12 @@ namespace Infraestructure.Repository
                 ctx.Configuration.LazyLoadingEnabled = false;
                 oProducto = GetProductoByID((String)producto.ID);
                 IRepositoryProveedor _RepositoryProveedor = new RepositoryProveedor();
+                IRepositoryUbicacion _RepositoryUbicacion = new RepositoryUbicacion();
 
                 if (oProducto == null)
                 {
 
-                    //Insertar
+                    //Insertar proveedores
                     if (selectedProveedores != null)
                     {
 
@@ -139,6 +139,27 @@ namespace Infraestructure.Repository
                             //le indicamos que ya existe, que no la cree. Y la agregamos al libro.
                             producto.PROVEEDOR.Add(proveedorToAdd);// asociar a la categoría existente con el libro
                                                                    //FIN =========================================================================================
+
+                        }
+                    }
+                    //Insertar ubicaciones
+                    if (selectedUbicaciones != null)
+                    {
+
+                        producto.PRODUCTO_UBICACION = new List<PRODUCTO_UBICACION>();
+                        foreach (var ubicaciones in selectedUbicaciones)
+                        { //LOGICA PARA INSERTAR CATEGORIAS===========================================================
+                            var ubicacionToAdd = _RepositoryUbicacion.GetUbicacionByID(int.Parse(ubicaciones));
+                            PRODUCTO_UBICACION proUbiToAdd = new PRODUCTO_UBICACION();
+                            proUbiToAdd.ID_UBICACION = ubicaciones;
+                            proUbiToAdd.ID_PRODUCTO = producto.ID;
+                            proUbiToAdd.CANTIDAD = producto.CANTIDAD_MINIMA;
+
+                            ctx.PRODUCTO_UBICACION.Attach(proUbiToAdd);
+                            //Se hace un Attach porque sino, EF intentará esa categoria como nueva,
+                            //le indicamos que ya existe, que no la cree. Y la agregamos al libro.
+                            producto.PRODUCTO_UBICACION.Add(proUbiToAdd);// asociar a la categoría existente con el libro
+                         //FIN =========================================================================================
 
                         }
                     }
@@ -155,32 +176,54 @@ namespace Infraestructure.Repository
                     //Actualizar: 1,3,4
 
                     //PRIMERO Actualizar Libro
-                    ctx.PRODUCTO.Add(libro);
-                    ctx.Entry(libro).State = EntityState.Modified;
+                    ctx.PRODUCTO.Add(producto);
+                    ctx.Entry(producto).State = EntityState.Modified;
                     retorno = ctx.SaveChanges();
-                    //SEGUNDO Actualizar Categorias ====================================================================
-                    var selectedCategoriasID = new HashSet<string>(selectedCategorias);
-                    if (selectedCategorias != null)
+                    //SEGUNDO Actualizar Proveedores ====================================================================
+                    var selectedProveedoresID = new HashSet<string>(selectedProveedores);
+                    if (selectedProveedores != null)
                     {
                         //Obtengo las categorias que ya tiene:
-                        ctx.Entry(libro).Collection(p => p.Categoria).Load();
+                        ctx.Entry(producto).Collection(p => p.PROVEEDOR).Load();
                         //Aqui que sincronice, busque que hay nuevo, agregar y eliminar.
-                        var newCategoriaForLibro = ctx.Categoria
-                         .Where(x => selectedCategoriasID.Contains(x.IdCategoria.ToString())).ToList();
+                        var newProveedorForProducto = ctx.PROVEEDOR
+                         .Where(x => selectedProveedoresID.Contains(x.ID.ToString())).ToList();
                         //hace las categorias en un listado
-                        libro.Categoria = newCategoriaForLibro;
+                        producto.PROVEEDOR = newProveedorForProducto;
 
-                        ctx.Entry(libro).State = EntityState.Modified;
+                        ctx.Entry(producto).State = EntityState.Modified;
                         retorno = ctx.SaveChanges(); //se guarda en el contexto
                     }
+                    //SEGUNDO Actualizar Ubicaciones ====================================================================
+                    //var selectedUbicacionesID = new HashSet<string>(selectedUbicaciones);
+                    //if (selectedUbicaciones != null)
+                    //{
+                    //    //Obtengo las categorias que ya tiene:
+                    //    ctx.Entry(producto).Collection(p => p.PRODUCTO_UBICACION).Load();
+                    //    //Aqui que sincronice, busque que hay nuevo, agregar y eliminar.
+                    //    var newUbicacionForProducto = ctx.PRODUCTO_UBICACION
+                    //     .Where(x => selectedUbicacionesID.Contains(x.ID_UBICACION.ToString())).ToList(); 
+                    //    //********este me esta trayendo TODAS las ubicaciones con el ID seleccionado
+
+                    //    //hace las categorias en un listado
+                    //    producto.PRODUCTO_UBICACION = newUbicacionForProducto;
+
+                    //    ctx.Entry(producto).State = EntityState.Modified;
+                    //    retorno = ctx.SaveChanges(); //se guarda en el contexto
+                    //}
                 }
             }
 
             if (retorno >= 0)
-                oLibro = GetLibroByID((int)libro.IdLibro);
+                oProducto = GetProductoByID(producto.ID);
 
-            return oLibro;
+            return oProducto;
         }
+        //Fin sem 5===============================================================================
 
+        public void DeleteProducto(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
