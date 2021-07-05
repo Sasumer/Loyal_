@@ -54,6 +54,7 @@
     <Compile Include="Services\ServiceTipoProducto.cs" />
     <Compile Include="Services\ServiceUbicacion.cs" />
     <Compile Include="Services\ServiceUsuario.cs" />
+    <Compile Include="Utils\Cryptography.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOS\" />

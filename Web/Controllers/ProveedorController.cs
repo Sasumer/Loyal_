@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Web.Util;
 
+
+
 namespace Web.Controllers
 {
     public class ProveedorController : Controller
@@ -62,7 +64,7 @@ namespace Web.Controllers
                 {
                     TempData["Message"] = "No existe el PROVEEDOR solicitado";
                     TempData["Redirect"] = "PROVEEDOR";
-                    TempData["Redirect-Action"] = "IndexAdmin";
+                    TempData["Redirect-Action"] = "Index";
                     // Redireccion a la captura del Error
                     return RedirectToAction("Default", "Error");
                 }
@@ -74,53 +76,115 @@ namespace Web.Controllers
                 Log.Error(ex, MethodBase.GetCurrentMethod());
                 TempData["Message"] = "Error al procesar los datos! " + ex.Message;
                 TempData["Redirect"] = "PROVEEDOR";
-                TempData["Redirect-Action"] = "IndexAdmin";
+                TempData["Redirect-Action"] = "Index";
                 // Redireccion a la captura del Error
                 return RedirectToAction("Default", "Error");
             }
         }
 
+        private MultiSelectList listaUsuarios(ICollection<USUARIO> usuario)
+        {
+            //Lista de Categorias
+            IServiceUsuario _ServiceUsuario = new ServiceUsuario();
+            IEnumerable<USUARIO> listaUsuarios = _ServiceUsuario.GetUSUARIO();
+            string[] listaUsuarioSelect = null;
+
+            if (usuario != null)
+            {
+
+                listaUsuarioSelect = usuario.Select(c => c.ID).ToArray();
+            }
+
+            return new MultiSelectList(listaUsuarios, "ID", "Nombre", listaUsuarioSelect);
+
+        }
+
+
         // GET: Proveedor/Create
         public ActionResult Create()
         {
+
+            ViewBag.IdUsuarios = listaUsuarios(null);
             return View();
         }
 
-        // POST: Proveedor/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: Proveedor/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            ServiceProveedor _ServicePROVEEDOR = new ServiceProveedor();
+            PROVEEDOR PROVEEDOR = null;
+            try
+            {
+                // Si va null
+                if (id == null)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                PROVEEDOR = _ServicePROVEEDOR.GetPROVEEDORByID(id.Value);
+                if (PROVEEDOR == null)
+                {
+                    TempData["Message"] = "No existe el PROVEEDOR solicitado";
+                    TempData["Redirect"] = "PROVEEDOR";
+                    TempData["Redirect-Action"] = "Index";
+                    // Redireccion a la captura del Error
+                    return RedirectToAction("Default", "Error");
+                }
+                ViewBag.IdUsuarios = listaUsuarios(PROVEEDOR.USUARIO);
+                return View(PROVEEDOR);
+            }
+            catch (Exception ex)
+            {
+                // Salvar el error en un archivo 
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["Message"] = "Error al procesar los datos! " + ex.Message;
+                TempData["Redirect"] = "PROVEEDOR";
+                TempData["Redirect-Action"] = "Index";
+                // Redireccion a la captura del Error
+                return RedirectToAction("Default", "Error");
+            }
         }
 
-        // POST: Proveedor/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+
+
+
+
+
+
+    // POST: Proveedor/Edit/5
+    [HttpPost]
+        public ActionResult Save(PROVEEDOR pROVEEDOR, String[] selectedUsuarios)
         {
+            IServiceProveedor _ServicePROVEEDOR = new ServiceProveedor();
+
             try
             {
                 // TODO: Add update logic here
 
+
+
+                if (ModelState.IsValid)
+                {
+                    PROVEEDOR oPROVEEDORi = _ServicePROVEEDOR.Save(pROVEEDOR, selectedUsuarios);
+                }
+                else
+                {
+                    // Valida Errores si Javascript está deshabilitado
+                    Util.Util.ValidateErrors(this);
+                    ViewBag.IdUsuario = listaUsuarios(pROVEEDOR.USUARIO);
+                    return View("Create", pROVEEDOR);
+                }
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["Message"] = "Error al procesar los datos! " + ex.Message;
+                TempData["Redirect"] = "PROVEEDOR";
+                TempData["Redirect-Action"] = "Index";
+                // Redireccion a la captura del Error
+                return RedirectToAction("Default", "Error");
             }
         }
 

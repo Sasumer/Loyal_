@@ -73,7 +73,11 @@ namespace Infraestructure.Models
 
     internal partial class ProveedorMetadata
     {
+        [Required(AllowEmptyStrings = false, ErrorMessage ="Identificación necesaria")]
+        [Display(Name = "Identificacion")]
+        public string ID { get; set; }
 
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Nombre necesari")]
         [Display(Name = "Nombre de la Organizacion")]
         public string NOMBRE_ORGAN { get; set; }
 
@@ -101,14 +105,45 @@ namespace Infraestructure.Models
         [Display(Name = "Tipo de Factura")]
         public int ID_TIPO_FACTURA { get; set; }
         public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
+        [Display(Name = "Tipo de Factura")]
         public virtual TIPO_FACTURA TIPO_FACTURA { get; set; }
         public virtual USUARIO USUARIO { get; set; }
 
     }
 
+    internal partial class UsuarioMetadata
+    {
+        [Display(Name = "Identificación")]
+        public string ID { get; set; }
+        [Display(Name = "Correo")]
+        public string correo_electronico { get; set; }
+        [Display(Name = "Contraseña")]
+        public string contrasenna { get; set; }
 
 
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; }
+        [Display(Name = "Primer Apellido")]
+        public string Apellido1 { get; set; }
+        [Display(Name = "Segundo Apellido")]
+        public string Apellido2 { get; set; }
+        [Display(Name = "Estado")]
+        public Nullable<bool> Activo { get; set; }
 
+
+        public virtual ICollection<ENC_FACTURA> ENC_FACTURA { get; set; }
+
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
+
+        public virtual ICollection<PRODUCTO> PRODUCTO1 { get; set; }
+
+        public virtual ICollection<Telefono> Telefono { get; set; }
+
+        public virtual ICollection<USUARIO_ROL> USUARIO_ROL { get; set; }
+       
+        public virtual ICollection<PROVEEDOR> PROVEEDOR { get; set; }
+
+    }
 
 
 

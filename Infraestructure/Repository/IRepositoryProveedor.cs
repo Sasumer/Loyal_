@@ -20,10 +20,7 @@ namespace Infraestructure.Repository
 
         void DeleteLibro(int id);
 
-        PROVEEDOR Save(PROVEEDOR proveedor);
-
-
-
+        PROVEEDOR Save(PROVEEDOR proveedor, String[] selectedUsuarios);
 
 
     }

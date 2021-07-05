@@ -26,6 +26,7 @@ namespace Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                      "~/Content/bootstrap-minty.min.css",
+                      "~/Content/jquery-ui.css", "~/Content/sweetalert.css",
                       "~/Content/index.css"));
         }
     }
