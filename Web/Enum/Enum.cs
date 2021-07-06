@@ -1,1 +1,0 @@
-﻿public enum Roles { Administrador = 1, Empleado = 2, Reportes = 3 }
