@@ -1,0 +1,57 @@
+﻿@model Infraestructure.Models.PRODUCTO
+
+@{
+    ViewBag.Title = "Detalle productos";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary"> @Html.DisplayFor(model => model.TIPO_PRODUCTO.DESCRIPCION) </strong>
+                    <h3 class="mb-0">@Html.DisplayFor(model => model.DESCRIPCION) </h3>
+                    <div class="mb-1 text-muted"><b>@Html.DisplayNameFor(model => model.ID):</b> @Html.DisplayFor(model => model.ID)</div>
+                    <div class="mb-1 text-muted">
+                        <b>@Html.DisplayNameFor(model => model.PROVEEDOR):</b>
+                        <ul>
+                            @foreach (var c in Model.PROVEEDOR)
+                            {
+                                <li>@c.NOMBRE_ORGAN</li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="mb-1 text-muted">
+                        <b>@Html.DisplayNameFor(model => model.PRODUCTO_UBICACION):</b>
+                        <ul>
+                            @foreach (var c in Model.PRODUCTO_UBICACION)
+                            {
+                                <li>@Html.DisplayFor(modelItem=>c.UBICACION.DESCRIPCION)</li> 
+                            }
+                        </ul>
+                    </div>
+                    <p class="card-text mb-auto">
+                        <b>@Html.DisplayNameFor(model => model.LOG_ACTIVO):</b> @Html.DisplayFor(model => model.LOG_ACTIVO)<br />
+                        <b>@Html.DisplayNameFor(model => model.FECHA_VENCIMIENTO):</b> @Html.DisplayFor(model => model.FECHA_VENCIMIENTO)<br />
+
+                        <b>@Html.DisplayNameFor(model => model.COSTO):</b> @Html.DisplayFor(model => model.COSTO)<br />
+                        <b>@Html.DisplayNameFor(model => model.PRECIO_VENTA):</b> &cent; @Html.DisplayFor(model => model.PRECIO_VENTA)<br />
+                        <b>@Html.DisplayNameFor(model => model.CANTIDAD_MINIMA):</b> @Html.DisplayFor(model => model.CANTIDAD_MINIMA)<br />
+                    </p>
+
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(Model.PHOTO)" role="img" alt="Libro @Html.DisplayNameFor(model => model.DESCRIPCION)" class="bd-placeholder-img" width="200" height="250">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Regresar al listado", "IndexAdmin")
+</p>

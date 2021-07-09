@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Infraestructure.Models.PRODUCTO>
+
+@{
+    ViewBag.Title = "Listado de Productos";
+}
+
+<h2 class="text-info">Productos</h2>
+<div class="row">
+    <div class="col-lg-3">
+        @* Listado de autores *@
+    </div>
+    <div class="col-lg-9">
+        @* Listado de libros *@
+        <div id="resultado" class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-3">
+                    <div class="card">
+                        @*La imagen es un mapa de bits (en sql: varbinary(max)).*@
+                        <img src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(item.PHOTO)"
+                             alt="Imagen @Html.DisplayFor(modelItem => item.DESCRIPCION)" class="img-thumbnail" />
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.DESCRIPCION)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"> @Html.DisplayNameFor(model => model.TIPO_PRODUCTO):
+                            @Html.DisplayFor(modelItem => item.TIPO_PRODUCTO.DESCRIPCION)</h6>
+                            <p class="card-text">   @Html.DisplayNameFor(model => model.PRECIO_VENTA):  @Html.DisplayFor(modelItem => item.PRECIO_VENTA)</p>
+
+                            <div class="card-body">
+                                <input type="button" value="Ordenar" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
+}
+

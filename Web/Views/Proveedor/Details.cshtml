@@ -1,0 +1,58 @@
+﻿@model Infraestructure.Models.PROVEEDOR
+
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contactos</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <div class="mb-1 text-muted"><b>@Html.DisplayNameFor(model => model.NOMBRE_ORGAN):</b> @Html.DisplayFor(model => model.NOMBRE_ORGAN)</div>
+                    <div class="mb-1 text-muted">
+                        <b>@Html.DisplayNameFor(model => model.USUARIO):</b>
+                        <ul>
+                            @foreach (var c in Model.USUARIO)
+                            {
+
+                                <li>Contacto</li>
+                                <li style="list-style:none">@c.Nombre  @c.Apellido2  @c.Apellido2</li>
+                                <li style="list-style:none">@c.correo_electronico</li>
+
+
+                            }
+
+
+                        </ul>
+                    </div>
+
+                    <div class="mb-1 text-muted">
+                        <h5>Productos</h5>
+                        <b>@Html.DisplayNameFor(model => model.PRODUCTO):</b>
+                        <ul>
+                            @foreach (var c in Model.PRODUCTO)
+                            {
+
+                                <li>@c.DESCRIPCION</li>
+
+                            }
+
+
+                        </ul>
+                    </div>
+
+                </div>
+     
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Atras", "Index")
+</p>
