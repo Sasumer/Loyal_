@@ -65,29 +65,45 @@
         </div>
     </div>
 
+
+
+
     <div class="form-group">
         @Html.LabelFor(model => model.Activo, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Activo, new { htmlAttributes = new { @class = "form-control" } })
+            @*@Html.EditorFor(model => model.LOG_ACTIVO, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.DropDownListFor(model => model.Activo, new List<SelectListItem>()
+           {
+               new SelectListItem() {Text = "Activo", Value="True" },
+                new SelectListItem() {Text = "Inactivo", Value="False" }
+           }, "Selecccionar....", new { @id = "estado", @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Activo, "", new { @class = "text-danger" })
         </div>
     </div>
 
+
+
+
+
     <div class="form-group">
-        @Html.LabelFor(model => model.USUARIO_ROL, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ROL, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("selectedRol",
-    (MultiSelectList)ViewBag.IdRol,
-    new { htmlAttributes = new { @class = "form-control" }, multiple = "multiple" })
+            @*@Html.EditorFor(model => model.IdAutor, new { htmlAttributes = new { @class = "form-control" } })*@
+            @* Lo forzamos a ser un: "DropDownListFor" fuertemente tipado *@
+            @Html.DropDownListFor(model => model.ID_ROL,@*propiedad del modelo con el que hace referencia*@
+(SelectList)ViewBag.IdRol, /*lista de elementeos que quiero cargar*/
+//(este ViewBag.idAutor viene del LibroController/create)
+"Seleccione un rol", /*opcion por defecto*/
+htmlAttributes: new { @class = "form-control" }) @*bootstrap*@
+@Html.ValidationMessageFor(model => model.ID_ROL, "", new { @class = "text-danger" })
+</div>
+</div>
 
-        </div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Crear" class="btn btn-primary" />
     </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Crear" class="btn btn-primary" />
-        </div>
-    </div>
+</div>
 </div>
 }
 

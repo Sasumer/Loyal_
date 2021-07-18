@@ -336,6 +336,7 @@
     <Content Include="Views\Orden\Details.cshtml" />
     <Content Include="Views\Orden\_DetalleOrden.cshtml" />
     <Content Include="Views\Shared\_OrdenCantidad.cshtml" />
+    <Content Include="Views\Usuario\UnAuthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

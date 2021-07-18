@@ -108,22 +108,17 @@ namespace Web.Controllers
         }
 
         // GET: USUARIO/Create
-        private MultiSelectList listaRoles(ICollection<ROL> usuRol)
+
+
+        private SelectList listaRol(Nullable<int> idRol = 0) //public Nullable<int> ID_TIPO_PRODUCTO { get; set; }
         {
-            //Lista de Categorias
+            //Lista de autores
             IServiceRol _ServiceRol = new ServiceRol();
             IEnumerable<ROL> listaRoles = _ServiceRol.GetROLs();
-            string[] listaRolesSelect = null;
-
-            if (usuRol != null)
-            {
-
-                listaRolesSelect = usuRol.Select(c => c.ID+"").ToArray();
-            }
-
-            return new MultiSelectList(listaRoles, "ID", "DESCRIPCION", listaRolesSelect);
-
+            //Otra logica, pero al final la profe no la implementa, FALTAA***: Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
+            return new SelectList(listaRoles, "ID", "DESCRIPCION", idRol);
         }
+
         private MultiSelectList listaTelefonos(ICollection<Telefono> telefono)
         {
             //Lista de Categorias
@@ -143,7 +138,7 @@ namespace Web.Controllers
         [CustomAuthorize((int)Roles.Administrador)]
         public ActionResult Create()
         {
-            ViewBag.IdRol = listaRoles(null);
+            ViewBag.IdRol = listaRol(null);
             return View();
         }
 
@@ -273,9 +268,7 @@ namespace Web.Controllers
                 if (Session["User"] != null)
                 {
                     USUARIO oUsuario = Session["User"] as USUARIO;
-                    //Log.Warn($"El usuario {oUsuario.Nombre} {oUsuario.Apellidos} con el rol {oUsuario.Rol.IdRol}-{oUsuario.Rol.Descripcion}, intentó acceder una página sin permisos  ");
-                    //Log.Warn($"El usuario {oUsuario.Nombre} {oUsuario.Apellido1} con el rol {oUsuario.USUARIO_ROL}, intentó acceder una página sin permisos  ");
-                    Log.Warn($"El usuario {oUsuario.Nombre} {oUsuario.Apellido1}, intentó acceder una página sin permisos  ");
+                    Log.Warn($"El usuario {oUsuario.Nombre} {oUsuario.Apellido1} con el rol {oUsuario.ROL.ID}-{oUsuario.ROL.DESCRIPCION}, intentó acceder una página sin permisos  ");
                 }
 
                 return View();
@@ -312,7 +305,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(USUARIO uSUARIO, String[] selectedRol)
+        public ActionResult Save(USUARIO uSUARIO)
         {
             IServiceUsuario _ServiceUsuario = new ServiceUsuario();
 
@@ -324,7 +317,7 @@ namespace Web.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    //USUARIO oUSUARIO = _ServiceUsuario.Save(uSUARIO, selectedRol);
+                    USUARIO oUSUARIO = _ServiceUsuario.Save(uSUARIO);
                 }
                 else
                 {

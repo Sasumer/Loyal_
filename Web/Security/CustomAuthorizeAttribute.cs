@@ -33,16 +33,9 @@ namespace Web.Security
             {
                 foreach (var rol in allowedroles)
                 {
-                    //IServiceRol _ServiceRol = new ServiceRol();
-                    //ROL rolUsuario = new ROL();
-                    //rolUsuario = _ServiceRol.GetROLbyID(oUsuario.)
-                    //USUARIO_ROL usuRolToAdd = new USUARIO_ROL();
-                    //usuRolToAdd.ID_ROL = ;
-                    //usuRolToAdd.cedula = usuario.ID;
-                    //usuRolToAdd.LOG_ACTIVO = true;
-
-                    if (rol == 1)
+                    if (rol == oUsuario.ID_ROL)
                         return true;
+
                 }
             }
             return authorize;
