@@ -48,6 +48,7 @@
     <Compile Include="Services\IServiceProveedor.cs" />
     <Compile Include="Services\IServiceRol.cs" />
     <Compile Include="Services\IServiceTelefono.cs" />
+    <Compile Include="Services\IServiceTipoFactura.cs" />
     <Compile Include="Services\IServiceTipoProducto.cs" />
     <Compile Include="Services\IServiceUbicacion.cs" />
     <Compile Include="Services\IServiceUsuario.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Services\ServiceProveedor.cs" />
     <Compile Include="Services\ServiceRol.cs" />
     <Compile Include="Services\ServiceTelefono.cs" />
+    <Compile Include="Services\ServiceTipoFactura.cs" />
     <Compile Include="Services\ServiceTipoProducto.cs" />
     <Compile Include="Services\ServiceUbicacion.cs" />
     <Compile Include="Services\ServiceUsuario.cs" />

@@ -26,7 +26,21 @@
                             <p class="card-text">   @Html.DisplayNameFor(model => model.PRECIO_VENTA):  @Html.DisplayFor(modelItem => item.PRECIO_VENTA)</p>
 
                             <div class="card-body">
-                                <input type="button" value="Ordenar" class="btn btn-primary" />
+
+                                @Ajax.ActionLink("Ordenar",//Texto para el usuario
+                                      "ordenarProducto",//Acción a llamar
+                                      "Orden",
+                                      new
+                                      {
+                                          idProducto = item.ID
+                                      },//Parámetros a enviar
+                                      new AjaxOptions
+                                      {
+                                          UpdateTargetId = "cantidadProductos",
+                                          InsertionMode = InsertionMode.Replace,
+                                          HttpMethod = "GET",
+                                      }, new { @class = "btn btn-primary" }
+                                      )
                             </div>
                         </div>
                     </div>

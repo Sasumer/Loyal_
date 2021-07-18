@@ -120,6 +120,7 @@
     <Compile Include="Repository\IRepositoryProducto.cs" />
     <Compile Include="Repository\IRepositoryProveedor.cs" />
     <Compile Include="Repository\IRepositoryRol.cs" />
+    <Compile Include="Repository\IRepositoryTipoFactura.cs" />
     <Compile Include="Repository\IRepositoryTipoProducto.cs" />
     <Compile Include="Repository\IRepositoryUbicacion.cs" />
     <Compile Include="Repository\IRepositoryUsuario.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Repository\RepositoryProveedor.cs" />
     <Compile Include="Repository\RepositoryRol.cs" />
     <Compile Include="Repository\RepositoryTelefono.cs" />
+    <Compile Include="Repository\RepositoryTipoFactura.cs" />
     <Compile Include="Repository\RepositoryTipoProducto.cs" />
     <Compile Include="Repository\RepositoryUbicacion.cs" />
     <Compile Include="Repository\RepositoryUsuario.cs" />

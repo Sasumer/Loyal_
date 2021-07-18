@@ -35,10 +35,11 @@
                    {
                        @class = "form-control changeCantidad", //changeCantidad: clase.
                        data_libroid = item.Producto.ID, //data_libroid: variables para html.
-                       onchange = "updateCantidad(this)" //onchange: Evento que llama una funcion de javascript.
-                                                         //This: toda la caja de texto con el valor que indico el usuario
-                                                         //updateCantidad: es una vista parcial. En Views/Orden/Index.cshtml **********
-                 }})
+                       onchange = "updateCantProductos(this)" //onchange: Evento que llama una funcion de javascript.
+                                                              //This: toda la caja de texto con el valor que indico el usuario
+                                                              //updateCantidad: es una vista parcial. En Views/Orden/Index.cshtml **********
+                   }
+               })
                 </td>
                 <td class="right">
 

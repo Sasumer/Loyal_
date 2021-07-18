@@ -30,7 +30,21 @@
                 </div>
 
             </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_TIPO_FACTURA, htmlAttributes: new { @class = "col-form-label " })
+                    <div class="col-md-12">
+                        @Html.DropDownListFor(model => model.ID_TIPO_FACTURA, (SelectList)ViewBag.idTipoFactura, " Seleccione un Tipo de Factura ", htmlAttributes: new { @class = "mw-100 form-control " })
+                        @Html.ValidationMessageFor(model => model.ID_TIPO_FACTURA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+
+
     </div>
 
     <hr />

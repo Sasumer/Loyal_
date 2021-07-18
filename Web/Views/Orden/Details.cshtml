@@ -21,12 +21,29 @@
             @Html.DisplayNameFor(model => model.USUARIO)
         </dt>
 
+
         <dd>
             @{
                 var nombreCompleto = Model.USUARIO.Nombre + " " + Model.USUARIO.Apellido1 + " " + Model.USUARIO.Apellido2;
             }
             @Html.DisplayFor(model => nombreCompleto)
         </dd>
+
+
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.TIPO_FACTURA)
+        </dt>
+
+
+        <dd>
+            @{
+                var Tipo = Model.TIPO_FACTURA.DESCRIPCION + "/" + Model.TIPO_FACTURA.MOVIMIENTO
+            }
+            @Html.DisplayFor(model => Tipo)
+        </dd>*@
+
+
 
     </dl>
     <hr />
