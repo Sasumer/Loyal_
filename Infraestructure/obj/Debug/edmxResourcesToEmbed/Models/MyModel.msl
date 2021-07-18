@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="LoyalModelStoreContainer" CdmEntityContainer="LoyalEntities">
+  <EntityContainerMapping StorageEntityContainer="LoyalModelStoreContainer" CdmEntityContainer="LoyalEntities1">
     <EntitySetMapping Name="DETALLE_FACTURA">
       <EntityTypeMapping TypeName="LoyalModel.DETALLE_FACTURA">
         <MappingFragment StoreEntitySet="DETALLE_FACTURA">
@@ -133,16 +133,8 @@
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
           <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="USUARIO_ROL">
-      <EntityTypeMapping TypeName="LoyalModel.USUARIO_ROL">
-        <MappingFragment StoreEntitySet="USUARIO_ROL">
-          <ScalarProperty Name="cedula" ColumnName="cedula" />
           <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
-          <ScalarProperty Name="LOG_ACTIVO" ColumnName="LOG_ACTIVO" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

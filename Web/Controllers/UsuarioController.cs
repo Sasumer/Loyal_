@@ -108,7 +108,7 @@ namespace Web.Controllers
         }
 
         // GET: USUARIO/Create
-        private MultiSelectList listaRoles(ICollection<USUARIO_ROL> usuRol)
+        private MultiSelectList listaRoles(ICollection<ROL> usuRol)
         {
             //Lista de Categorias
             IServiceRol _ServiceRol = new ServiceRol();
@@ -118,7 +118,7 @@ namespace Web.Controllers
             if (usuRol != null)
             {
 
-                listaRolesSelect = usuRol.Select(c => c.ID_ROL+"").ToArray();
+                listaRolesSelect = usuRol.Select(c => c.ID+"").ToArray();
             }
 
             return new MultiSelectList(listaRoles, "ID", "DESCRIPCION", listaRolesSelect);
@@ -188,7 +188,7 @@ namespace Web.Controllers
                     return RedirectToAction("Default", "Error");
                 }
                 //sem 5: =============================
-                ViewBag.IdUsuarioRol = listaRoles(usuario.USUARIO_ROL);
+                //ViewBag.IdUsuarioRol = listaRoles(usuario.USUARIO_ROL);
                 ViewBag.IdTelefono = listaTelefonos(usuario.Telefono);
                 //fin sem 5===========================
                 return View(usuario);
@@ -324,13 +324,13 @@ namespace Web.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    USUARIO oUSUARIO = _ServiceUsuario.Save(uSUARIO, selectedRol);
+                    //USUARIO oUSUARIO = _ServiceUsuario.Save(uSUARIO, selectedRol);
                 }
                 else
                 {
                     // Valida Errores si Javascript está deshabilitado
                     Util.Util.ValidateErrors(this);
-                    ViewBag.IdRol = listaRoles(uSUARIO.USUARIO_ROL);
+                    //ViewBag.IdRol = listaRoles(uSUARIO.USUARIO_ROL);
                     return View("Create", uSUARIO);
                 }
                 return RedirectToAction("Index");

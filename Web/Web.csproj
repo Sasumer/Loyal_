@@ -147,6 +147,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\EncFacturaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdenController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -160,6 +161,8 @@
     <Compile Include="Util\Log.cs" />
     <Compile Include="Util\SweetAlertHelper.cs" />
     <Compile Include="Util\Util.cs" />
+    <Compile Include="ViewModel\Carrito.cs" />
+    <Compile Include="ViewModel\ViewModelOrdenDetalle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -328,6 +331,11 @@
     <Content Include="Views\Producto\Edit.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\IndexAdmin.cshtml" />
+    <Content Include="Views\Orden\Index.cshtml" />
+    <Content Include="Views\Orden\IndexAdmin.cshtml" />
+    <Content Include="Views\Orden\Details.cshtml" />
+    <Content Include="Views\Orden\_DetalleOrden.cshtml" />
+    <Content Include="Views\Shared\_OrdenCantidad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

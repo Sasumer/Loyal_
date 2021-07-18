@@ -17,13 +17,13 @@ namespace Infraestructure.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ROL()
         {
-            this.USUARIO_ROL = new HashSet<USUARIO_ROL>();
+            this.USUARIO = new HashSet<USUARIO>();
         }
     
         public int ID { get; set; }
         public string DESCRIPCION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIO_ROL> USUARIO_ROL { get; set; }
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
     }
 }

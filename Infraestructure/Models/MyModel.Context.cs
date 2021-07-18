@@ -13,10 +13,10 @@ namespace Infraestructure.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LoyalEntities : DbContext
+    public partial class LoyalEntities1 : DbContext
     {
-        public LoyalEntities()
-            : base("name=LoyalEntities")
+        public LoyalEntities1()
+            : base("name=LoyalEntities1")
         {
         }
     
@@ -38,6 +38,5 @@ namespace Infraestructure.Models
         public virtual DbSet<Tipo_Telefono> Tipo_Telefono { get; set; }
         public virtual DbSet<UBICACION> UBICACION { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
-        public virtual DbSet<USUARIO_ROL> USUARIO_ROL { get; set; }
     }
 }

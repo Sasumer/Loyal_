@@ -199,40 +199,32 @@ namespace Infraestructure.Repository
                         ctx.Entry(producto).State = EntityState.Modified;
                         retorno = ctx.SaveChanges(); //se guarda en el contexto
                     }
-                    //SEGUNDO Actualizar Ubicaciones ====================================================================
-                    //var selectedUbicacionesID = new HashSet<string>(selectedUbicaciones);
-                    //if (selectedUbicaciones != null)
-                    //{
-                    //    //Obtengo las categorias que ya tiene:
-                    //    ctx.Entry(producto).Collection(p => p.PRODUCTO_UBICACION).Load();
-                    //    //Aqui que sincronice, busque que hay nuevo, agregar y eliminar.
-                    //    var newUbicacionForProducto = ctx.UBICACION
-                    //     .Where(x => selectedUbicacionesID.Contains(x.ID.ToString())).ToList();
-                    //    //********este me esta trayendo TODAS las ubicaciones con el ID seleccionado
-
-                    //    foreach (var ubicaciones in selectedUbicaciones)
-                    //    { //LOGICA PARA INSERTAR CATEGORIAS===========================================================
-                    //        //var ubicacionToAdd = _RepositoryUbicacion.GetUbicacionByID(int.Parse(ubicaciones));
-                    //        PRODUCTO_UBICACION proUbiToAdd = new PRODUCTO_UBICACION();
-                    //        proUbiToAdd.ID_UBICACION = ubicaciones;
-                    //        proUbiToAdd.ID_PRODUCTO = producto.ID;
-                    //        proUbiToAdd.CANTIDAD = producto.CANTIDAD_MINIMA;
-
-                    //        ctx.PRODUCTO_UBICACION.Attach(proUbiToAdd);
-                    //        //Se hace un Attach porque sino, EF intentará esa categoria como nueva,
-                    //        //le indicamos que ya existe, que no la cree. Y la agregamos al libro.
-                    //        producto.PRODUCTO_UBICACION.Add(proUbiToAdd);// asociar a la categoría existente con el libro
-                    //                                                     //FIN =========================================================================================
-                    //        ctx.PRODUCTO_UBICACION.Add(proUbiToAdd); //ACTUALIZADO 5 JULIO 2PM
-                    //        ctx.Entry(proUbiToAdd).State = EntityState.Modified;
-                    //    }
-                    //    ctx.Entry(producto).State = EntityState.Modified;
-                    //    //hace las categorias en un listado
-                    //    producto.PRODUCTO_UBICACION = newUbicacionForProducto;
-
-                       
-                    //    retorno = ctx.SaveChanges(); //se guarda en el contexto
-                    //}
+                    //SEGUNDO Actualizar Ubicaciones ===============================================================
+                    //idEstante arreglo de los identificadores de las ubicaciones o estantes
+                    if (selectedUbicaciones != null)
+                    {
+                        //Obtener los estantes registrados del producto a modificar
+                        List<PRODUCTO_UBICACION> estantesdelProducto = ctx.PRODUCTO_UBICACION.Where(x => x.ID_PRODUCTO == producto.ID).ToList();
+                        // Borrar los estantes existentes del producto
+                        foreach (var item in estantesdelProducto)
+                        {
+                            producto.PRODUCTO_UBICACION.Remove(item);
+                        }
+                        //Registrar los estantes especificados
+                        foreach (var ubicacion in selectedUbicaciones)
+                        {
+                            PRODUCTO_UBICACION prodUbi = new PRODUCTO_UBICACION();
+                            prodUbi.ID_PRODUCTO = producto.ID;
+                            prodUbi.ID_UBICACION = ubicacion;
+                            prodUbi.CANTIDAD = producto.CANTIDAD_MINIMA;
+                            ctx.PRODUCTO_UBICACION.Add(prodUbi);
+                            
+                        }
+                        
+                        ctx.Entry(producto).State = EntityState.Modified;
+                        retorno = ctx.SaveChanges();
+                    }
+                    //FIN =========================================================================================
                 }
             }
 

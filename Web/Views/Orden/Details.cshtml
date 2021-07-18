@@ -1,0 +1,68 @@
+﻿@model Infraestructure.Models.ENC_FACTURA
+
+@{
+    ViewBag.Title = "Detalle Orden";
+}
+
+
+<div>
+    <h4>Orden</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO)
+        </dt>
+
+        <dd>
+            @{
+                var nombreCompleto = Model.USUARIO.Nombre + " " + Model.USUARIO.Apellido1 + " " + Model.USUARIO.Apellido2;
+            }
+            @Html.DisplayFor(model => nombreCompleto)
+        </dd>
+
+    </dl>
+    <hr />
+    <h4>Detalle Orden</h4>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Producto
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th>
+                Precio
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.DETALLE_FACTURA)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRODUCTO.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CANTIDAD)
+                </td>
+                <td>
+                    &cent;@Html.DisplayFor(modelItem => item.PRECIO)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>

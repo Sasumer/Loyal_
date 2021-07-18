@@ -1,0 +1,105 @@
+﻿@model Infraestructure.Models.ENC_FACTURA
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Orden de Producto</h2>
+@using (Html.BeginForm("Save", "Orden", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_USUARIO, htmlAttributes: new { @class = "col-form-label " })
+                    <div class="col-md-12">
+                        @Html.DropDownListFor(model => model.ID_USUARIO, (SelectList)ViewBag.idCliente, " Seleccione un cliente ", htmlAttributes: new { @class = "mw-100 form-control " })
+                        @Html.ValidationMessageFor(model => model.ID_USUARIO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FECHA, htmlAttributes: new { @class = "col-form-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.FECHA, htmlAttributes: new { @class = "form-control", @Value = DateTime.Now.ToString("yyyy-MM-dd"), @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.FECHA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <span class="glyphicons glyphicons-hand-left"></span>
+    <div id="resultadoDetalle">
+        @if (Web.ViewModel.Carrito.Instancia.Items.Count() > 0)
+        {
+            @Html.Partial("~/Views/Orden/_DetalleOrden.cshtml", (List<Web.ViewModel.ViewModelOrdenDetalle>)ViewBag.DetalleOrden)
+        }
+        else
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                La orden no tiene Productos asignados
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+
+    </div>
+    <hr />
+    <!-- Submit -->
+    <button type="submit" class="btn btn-success float-right" id="btnOrdenar">
+        <span class="glyphicon  glyphicon-floppy-save"></span>
+        Guardar
+    </button>
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryajax")
+
+    <script type="text/javascript">
+
+        //Actualizar cantidad de libros en el carrito
+        //Cambio de cantidad en caja de texto
+        function updateCantidad(ctr) { //del _DetalleOrden
+            var txtCantidad = $(ctr); //jquery
+            var cantidad = txtCantidad.val();
+            var id = txtCantidad.data("productoid");
+            $.ajax({
+                type: "GET",
+                dataType: 'text',
+                url: "/Orden/actualizarCantidad",
+                data: { "idProducto": id, "cantidad": cantidad },
+                success: function (data) {
+                    $("#resultadoDetalle").html('');
+                    $("#resultadoDetalle").html(data);
+                    updateCantProductos(); //llama a otro metodo
+                }, error: function (xhr, status, error) {
+                    console.log("Error: " + error + ", No Error: " + xhr.status);
+                },
+            });
+        }
+        //Actualizar cantidad de libros en el menú
+        function updateCantProductos() {
+            $.ajax({
+                type: "GET",
+                dataType: 'text',
+                url: "/Orden/actualizarOrdenCantidad", //actualiza el carrito y muestra la notificacion
+                success: function (data) {
+                    $("#cantidadProductos").html('');
+                    $("#cantidadProductos").html(data);
+                }, error: function (xhr, status, error) {
+                    console.log("Error: " + error + ", No Error: " + xhr.status);
+                },
+            });
+        }
+
+
+    </script>
+}

@@ -1,0 +1,91 @@
+﻿@model List<Web.ViewModel.ViewModelOrdenDetalle>
+
+<div class="table-responsive-sm">
+    @*Accion, nombre de controlador*@
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Producto
+            </th>
+            <th class="center">
+                Cantidad
+            </th>
+            <th class="right">
+                Precio
+            </th>
+
+            <th class="right">
+                SubTotal
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.HiddenFor(modelItem => item.Producto.ID)
+                    @Html.DisplayFor(modelItem => item.Producto.DESCRIPCION)
+                </td>
+                <td class="center" style="width:1.5em">
+                    @Html.EditorFor(modelItem => item.Cantidad, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control changeCantidad", //changeCantidad: clase.
+                       data_libroid = item.Producto.ID, //data_libroid: variables para html.
+                       onchange = "updateCantidad(this)" //onchange: Evento que llama una funcion de javascript.
+                                                         //This: toda la caja de texto con el valor que indico el usuario
+                                                         //updateCantidad: es una vista parcial. En Views/Orden/Index.cshtml **********
+                 }})
+                </td>
+                <td class="right">
+
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+
+                <td class="right">
+                    @Html.DisplayFor(modelItem => item.SubTotal)
+                </td>
+                <td>
+                    @Ajax.ActionLink("Eliminar",//Texto para el usuario
+                        "eliminarProducto",//Acción a llamar
+                        "Orden",
+                        new
+                        {
+                            idProducto = item.IdProducto
+                        },//Parámetros a enviar
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = "resultadoDetalle",
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "GET",
+                            OnComplete = "updateCantProductos()" //orden/index
+                        }, new { @class = "btn btn-primary" }
+                        )
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div class="row">
+    <div class="col-lg-5 col-sm-5"></div>
+    <div class="col-lg-7 col-sm-5 ml-auto">
+        <table class="table table-clear">
+            <tbody>
+                <tr>
+                    <td class="left">
+                        <strong>Total</strong>
+                    </td>
+                    <td class="right">
+                        <strong>@(((decimal)Web.ViewModel.Carrito.Instancia.GetTotal()).ToString("C2"))</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

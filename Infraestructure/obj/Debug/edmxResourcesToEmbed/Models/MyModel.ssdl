@@ -139,16 +139,8 @@
     <Property Name="Nombre" Type="varchar" MaxLength="50" />
     <Property Name="Apellido1" Type="varchar" MaxLength="50" />
     <Property Name="Apellido2" Type="varchar" MaxLength="50" />
-    <Property Name="Activo" Type="bit" />
-  </EntityType>
-  <EntityType Name="USUARIO_ROL">
-    <Key>
-      <PropertyRef Name="cedula" />
-      <PropertyRef Name="ID_ROL" />
-    </Key>
-    <Property Name="cedula" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="ID_ROL" Type="int" Nullable="false" />
-    <Property Name="LOG_ACTIVO" Type="bit" />
+    <Property Name="Activo" Type="bit" />
   </EntityType>
   <Association Name="FK_DETALLE_FACTURA_ENC_FACTURA">
     <End Role="ENC_FACTURA" Type="Self.ENC_FACTURA" Multiplicity="1" />
@@ -342,27 +334,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_USUARIO_ROL_ROL">
+  <Association Name="FK_USUARIO_ROL">
     <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
-    <End Role="USUARIO_ROL" Type="Self.USUARIO_ROL" Multiplicity="*" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ROL">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="USUARIO_ROL">
+      <Dependent Role="USUARIO">
         <PropertyRef Name="ID_ROL" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_USUARIO_ROL_USUARIO">
-    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
-    <End Role="USUARIO_ROL" Type="Self.USUARIO_ROL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="USUARIO">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="USUARIO_ROL">
-        <PropertyRef Name="cedula" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -382,7 +362,6 @@
     <EntitySet Name="Tipo_Telefono" EntityType="Self.Tipo_Telefono" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UBICACION" EntityType="Self.UBICACION" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="USUARIO_ROL" EntityType="Self.USUARIO_ROL" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_DETALLE_FACTURA_ENC_FACTURA" Association="Self.FK_DETALLE_FACTURA_ENC_FACTURA">
       <End Role="ENC_FACTURA" EntitySet="ENC_FACTURA" />
       <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
@@ -447,13 +426,9 @@
       <End Role="USUARIO" EntitySet="USUARIO" />
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
     </AssociationSet>
-    <AssociationSet Name="FK_USUARIO_ROL_ROL" Association="Self.FK_USUARIO_ROL_ROL">
+    <AssociationSet Name="FK_USUARIO_ROL" Association="Self.FK_USUARIO_ROL">
       <End Role="ROL" EntitySet="ROL" />
-      <End Role="USUARIO_ROL" EntitySet="USUARIO_ROL" />
-    </AssociationSet>
-    <AssociationSet Name="FK_USUARIO_ROL_USUARIO" Association="Self.FK_USUARIO_ROL_USUARIO">
       <End Role="USUARIO" EntitySet="USUARIO" />
-      <End Role="USUARIO_ROL" EntitySet="USUARIO_ROL" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

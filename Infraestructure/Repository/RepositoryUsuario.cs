@@ -70,7 +70,8 @@ namespace Infraestructure.Repository
                     ctx.Configuration.LazyLoadingEnabled = false;
                     //Esto es un "Select * from Autor".
                     //lista = ctx.USUARIO.ToList<USUARIO>();
-                    oUSUARIO = ctx.USUARIO.Where(p => p.ID == id + "").Include(u => u.Telefono).Include(p => p.USUARIO_ROL).Include("USUARIO_ROL.USUARIO").FirstOrDefault();
+                    oUSUARIO = ctx.USUARIO.Where(p => p.ID == id + "").Include(u => u.Telefono).Include(p => p.ROL).FirstOrDefault();
+                    //.Include(p => p.USUARIO_ROL).Include("USUARIO_ROL.USUARIO").FirstOrDefault();
 
                 }
                 return oUSUARIO;
@@ -130,7 +131,7 @@ namespace Infraestructure.Repository
             }
         }
 
-        public USUARIO Save(USUARIO usuario, string[] selectedRol)
+        public USUARIO Save(USUARIO usuario, int selectedRol)
         {
             int retorno = 0;
             USUARIO uSUARIO = null;
@@ -146,28 +147,28 @@ namespace Infraestructure.Repository
 
                 
 
-                    if (selectedRol != null)
-                    {
+                    //if (selectedRol != null)
+                    //{
 
-                        usuario.USUARIO_ROL = new List<USUARIO_ROL>();
+                        //usuario.USUARIO_ROL = new List<USUARIO_ROL>();
 
 
-                        foreach (var rol in selectedRol)
-                        { //LOGICA PARA INSERTAR CATEGORIAS===========================================================
-                            //var ubicacionToAdd = _RepositoryUbicacion.GetUbicacionByID(int.Parse(ubicaciones));
-                            USUARIO_ROL usuRolToAdd = new USUARIO_ROL();
-                            usuRolToAdd.ID_ROL =int.Parse(rol);
-                            usuRolToAdd.cedula = usuario.ID;
-                            usuRolToAdd.LOG_ACTIVO = true;
+                        //foreach (var rol in selectedRol)
+                        //{ //LOGICA PARA INSERTAR CATEGORIAS===========================================================
+                        //    //var ubicacionToAdd = _RepositoryUbicacion.GetUbicacionByID(int.Parse(ubicaciones));
+                        //    USUARIO_ROL usuRolToAdd = new USUARIO_ROL();
+                        //    usuRolToAdd.ID_ROL =int.Parse(rol);
+                        //    usuRolToAdd.cedula = usuario.ID;
+                        //    usuRolToAdd.LOG_ACTIVO = true;
 
-                            ctx.USUARIO_ROL.Attach(usuRolToAdd);
-                            //Se hace un Attach porque sino, EF intentará esa categoria como nueva,
-                            //le indicamos que ya existe, que no la cree. Y la agregamos al libro.
-                            usuario.USUARIO_ROL.Add(usuRolToAdd);// asociar a la categoría existente con el libro
-                                                                         //FIN =========================================================================================
-                            ctx.USUARIO_ROL.Add(usuRolToAdd);
-                        }
-                    }
+                        //    ctx.USUARIO_ROL.Attach(usuRolToAdd);
+                        //    //Se hace un Attach porque sino, EF intentará esa categoria como nueva,
+                        //    //le indicamos que ya existe, que no la cree. Y la agregamos al libro.
+                        //    usuario.USUARIO_ROL.Add(usuRolToAdd);// asociar a la categoría existente con el libro
+                        //                                                 //FIN =========================================================================================
+                        //    ctx.USUARIO_ROL.Add(usuRolToAdd);
+                        //}
+                    //}
                     ctx.USUARIO.Add(usuario);
 
 

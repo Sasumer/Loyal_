@@ -78,7 +78,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="USUARIO_ROL" Relationship="Self.FK_USUARIO_ROL_ROL" FromRole="ROL" ToRole="USUARIO_ROL" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_ROL" FromRole="ROL" ToRole="USUARIO" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -147,24 +147,14 @@
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_ROL" Type="Int32" Nullable="false" />
     <Property Name="Activo" Type="Boolean" />
     <NavigationProperty Name="ENC_FACTURA" Relationship="Self.FK_ENC_FACTURA_USUARIO" FromRole="USUARIO" ToRole="ENC_FACTURA" />
     <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_USUARIO_EDITA" FromRole="USUARIO" ToRole="PRODUCTO" />
     <NavigationProperty Name="PRODUCTO1" Relationship="Self.FK_USUARIO_INGRESA" FromRole="USUARIO" ToRole="PRODUCTO" />
+    <NavigationProperty Name="ROL" Relationship="Self.FK_USUARIO_ROL" FromRole="USUARIO" ToRole="ROL" />
     <NavigationProperty Name="Telefono" Relationship="Self.FK_telefono_usuario" FromRole="USUARIO" ToRole="Telefono" />
-    <NavigationProperty Name="USUARIO_ROL" Relationship="Self.FK_USUARIO_ROL_USUARIO" FromRole="USUARIO" ToRole="USUARIO_ROL" />
     <NavigationProperty Name="PROVEEDOR" Relationship="Self.PROVEEDOR_USUARIO" FromRole="USUARIO" ToRole="PROVEEDOR" />
-  </EntityType>
-  <EntityType Name="USUARIO_ROL">
-    <Key>
-      <PropertyRef Name="cedula" />
-      <PropertyRef Name="ID_ROL" />
-    </Key>
-    <Property Name="cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ID_ROL" Type="Int32" Nullable="false" />
-    <Property Name="LOG_ACTIVO" Type="Boolean" />
-    <NavigationProperty Name="ROL" Relationship="Self.FK_USUARIO_ROL_ROL" FromRole="USUARIO_ROL" ToRole="ROL" />
-    <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_ROL_USUARIO" FromRole="USUARIO_ROL" ToRole="USUARIO" />
   </EntityType>
   <Association Name="FK_DETALLE_FACTURA_ENC_FACTURA">
     <End Role="ENC_FACTURA" Type="Self.ENC_FACTURA" Multiplicity="1" />
@@ -286,14 +276,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_USUARIO_ROL_ROL">
+  <Association Name="FK_USUARIO_ROL">
     <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
-    <End Role="USUARIO_ROL" Type="Self.USUARIO_ROL" Multiplicity="*" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ROL">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="USUARIO_ROL">
+      <Dependent Role="USUARIO">
         <PropertyRef Name="ID_ROL" />
       </Dependent>
     </ReferentialConstraint>
@@ -322,18 +312,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_USUARIO_ROL_USUARIO">
-    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
-    <End Role="USUARIO_ROL" Type="Self.USUARIO_ROL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="USUARIO">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="USUARIO_ROL">
-        <PropertyRef Name="cedula" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="PRODUCTO_PROVEEDOR">
     <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
     <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="*" />
@@ -342,7 +320,7 @@
     <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="*" />
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="LoyalEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="LoyalEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="DETALLE_FACTURA" EntityType="Self.DETALLE_FACTURA" />
     <EntitySet Name="ENC_FACTURA" EntityType="Self.ENC_FACTURA" />
     <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
@@ -356,7 +334,6 @@
     <EntitySet Name="Tipo_Telefono" EntityType="Self.Tipo_Telefono" />
     <EntitySet Name="UBICACION" EntityType="Self.UBICACION" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
-    <EntitySet Name="USUARIO_ROL" EntityType="Self.USUARIO_ROL" />
     <AssociationSet Name="FK_DETALLE_FACTURA_ENC_FACTURA" Association="Self.FK_DETALLE_FACTURA_ENC_FACTURA">
       <End Role="ENC_FACTURA" EntitySet="ENC_FACTURA" />
       <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
@@ -397,9 +374,9 @@
       <End Role="UBICACION" EntitySet="UBICACION" />
       <End Role="PRODUCTO_UBICACION" EntitySet="PRODUCTO_UBICACION" />
     </AssociationSet>
-    <AssociationSet Name="FK_USUARIO_ROL_ROL" Association="Self.FK_USUARIO_ROL_ROL">
+    <AssociationSet Name="FK_USUARIO_ROL" Association="Self.FK_USUARIO_ROL">
       <End Role="ROL" EntitySet="ROL" />
-      <End Role="USUARIO_ROL" EntitySet="USUARIO_ROL" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
     </AssociationSet>
     <AssociationSet Name="FK_telefono_usuario" Association="Self.FK_telefono_usuario">
       <End Role="USUARIO" EntitySet="USUARIO" />
@@ -408,10 +385,6 @@
     <AssociationSet Name="FK_tipo_telefono" Association="Self.FK_tipo_telefono">
       <End Role="Tipo_Telefono" EntitySet="Tipo_Telefono" />
       <End Role="Telefono" EntitySet="Telefono" />
-    </AssociationSet>
-    <AssociationSet Name="FK_USUARIO_ROL_USUARIO" Association="Self.FK_USUARIO_ROL_USUARIO">
-      <End Role="USUARIO" EntitySet="USUARIO" />
-      <End Role="USUARIO_ROL" EntitySet="USUARIO_ROL" />
     </AssociationSet>
     <AssociationSet Name="PRODUCTO_PROVEEDOR" Association="Self.PRODUCTO_PROVEEDOR">
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
