@@ -9,6 +9,10 @@
                 Producto
             </th>
             <th class="center">
+                Ubicacion
+            </th>
+
+            <th class="center">
                 Cantidad
             </th>
             <th class="right">
@@ -23,51 +27,75 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.HiddenFor(modelItem => item.Producto.ID)
-                    @Html.DisplayFor(modelItem => item.Producto.DESCRIPCION)
-                </td>
-                <td class="center" style="width:1.5em">
-                    @Html.EditorFor(modelItem => item.Cantidad, new
-               {
-                   htmlAttributes = new
-                   {
-                       @class = "form-control changeCantidad", //changeCantidad: clase.
-                       data_libroid = item.Producto.ID, //data_libroid: variables para html.
-                       onchange = "updateCantProductos(this)" //onchange: Evento que llama una funcion de javascript.
-                                                              //This: toda la caja de texto con el valor que indico el usuario
-                                                              //updateCantidad: es una vista parcial. En Views/Orden/Index.cshtml **********
-                   }
-               })
-                </td>
-                <td class="right">
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.Producto.ID)
+            @Html.DisplayFor(modelItem => item.Producto.DESCRIPCION)
+        </td>
 
-                    @Html.DisplayFor(modelItem => item.Precio)
-                </td>
 
-                <td class="right">
-                    @Html.DisplayFor(modelItem => item.SubTotal)
-                </td>
-                <td>
-                    @Ajax.ActionLink("Eliminar",//Texto para el usuario
-                        "eliminarProducto",//Acción a llamar
-                        "Orden",
-                        new
-                        {
-                            idProducto = item.IdProducto
-                        },//Parámetros a enviar
-                        new AjaxOptions
-                        {
-                            UpdateTargetId = "resultadoDetalle",
-                            InsertionMode = InsertionMode.Replace,
-                            HttpMethod = "GET",
-                            OnComplete = "updateCantProductos()" //orden/index
-                        }, new { @class = "btn btn-primary" }
-                        )
+        <td>
 
-                </td>
-            </tr>
+
+            @*<div class="form-group">
+            @Html.LabelFor(modelItem => item.Producto.PRODUCTO_UBICACION, htmlAttributes: new { @class = "col-form-label " })
+            <div class="col-md-12">
+                @Html.DropDownListFor(modelItem => item.Producto.PRODUCTO_UBICACION, (SelectList)ViewBag.listaUbicaciones, " Seleccione un cliente ", htmlAttributes: new { @class = "mw-100 form-control " })
+                @Html.ValidationMessageFor(modelItem => item.Producto.PRODUCTO_UBICACION, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+            <div class="col-md-12">
+                @foreach (var c in item.Producto.PRODUCTO_UBICACION)
+                {
+                    @Html.DisplayFor(modelItem => c.UBICACION.DESCRIPCION)
+                }
+            </div>
+
+        </td>
+
+
+        <td class="center" style="width:1.5em">
+            @Html.EditorFor(modelItem => item.Cantidad, new
+       {
+           htmlAttributes = new
+           {
+               @class = "form-control changeCantidad", //changeCantidad: clase.
+               data_libroid = item.Producto.ID, //data_libroid: variables para html.
+               onchange = "updateCantProductos(this)" //onchange: Evento que llama una funcion de javascript.
+                                                      //This: toda la caja de texto con el valor que indico el usuario
+                                                      //updateCantidad: es una vista parcial. En Views/Orden/Index.cshtml **********
+           }
+       })
+        </td>
+        <td class="right">
+
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+
+        <td class="right">
+            @Html.DisplayFor(modelItem => item.SubTotal)
+        </td>
+        <td>
+            @Ajax.ActionLink("Eliminar",//Texto para el usuario
+                "eliminarProducto",//Acción a llamar
+                "Orden",
+                new
+                {
+                    idProducto = item.IdProducto
+                },//Parámetros a enviar
+                new AjaxOptions
+                {
+                    UpdateTargetId = "resultadoDetalle",
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "GET",
+                    OnComplete = "updateCantProductos()" //orden/index
+                }, new { @class = "btn btn-primary" }
+                )
+
+        </td>
+    </tr>
         }
 
     </table>

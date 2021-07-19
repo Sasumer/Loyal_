@@ -34,6 +34,16 @@ namespace Web.Controllers
             return new SelectList(listaUsuario, "ID", "ID");
         }
 
+
+        private SelectList listaUbicaciones()
+        {
+            //Lista de Clientes
+            IServiceUbicacion _ServiceUbicacion = new ServiceUbicacion();
+            IEnumerable<UBICACION> listaUbicaciones = _ServiceUbicacion.GetUbicacion();
+
+            return new SelectList(listaUbicaciones, "ID", "ID");
+        }
+
         private SelectList listaTipoFactura()
         {
             //Lista de Clientes
@@ -45,10 +55,12 @@ namespace Web.Controllers
 
 
 
+
         //Actualizar Vista parcial detalle carrito
         private ActionResult DetalleCarrito()
         {
 
+            ViewBag.IdUbicaciones = listaUbicaciones();
             return PartialView("_DetalleOrden", Carrito.Instancia.Items);
         }
         //Actualizar cantidad de libros en el carrito
