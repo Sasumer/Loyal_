@@ -11,7 +11,9 @@
             <th class="center">
                 Ubicacion
             </th>
-
+            @*<th class="center">
+                Proveedor
+            </th>*@
             <th class="center">
                 Cantidad
             </th>
@@ -38,12 +40,12 @@
 
 
             @*<div class="form-group">
-            @Html.LabelFor(modelItem => item.Producto.PRODUCTO_UBICACION, htmlAttributes: new { @class = "col-form-label " })
-            <div class="col-md-12">
-                @Html.DropDownListFor(modelItem => item.Producto.PRODUCTO_UBICACION, (SelectList)ViewBag.listaUbicaciones, " Seleccione un cliente ", htmlAttributes: new { @class = "mw-100 form-control " })
-                @Html.ValidationMessageFor(modelItem => item.Producto.PRODUCTO_UBICACION, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(modelItem => item.Producto.PRODUCTO_UBICACION, htmlAttributes: new { @class = "col-form-label " })
+                <div class="col-md-12">
+                    @Html.DropDownListFor(modelItem => item.Producto.PRODUCTO_UBICACION, (SelectList)ViewBag.listaUbicaciones, " Seleccione un cliente ", htmlAttributes: new { @class = "mw-100 form-control " })
+                    @Html.ValidationMessageFor(modelItem => item.Producto.PRODUCTO_UBICACION, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
 
             <div class="col-md-12">
@@ -54,7 +56,10 @@
             </div>
 
         </td>
-
+        <!--<td>-->
+            @*@Html.HiddenFor(modelItem => item.Producto.ID)*@
+            @*@Html.DisplayFor(modelItem => item.Producto.PROVEEDOR.)*@
+        <!--</td>-->
 
         <td class="center" style="width:1.5em">
             @Html.EditorFor(modelItem => item.Cantidad, new
@@ -62,7 +67,7 @@
            htmlAttributes = new
            {
                @class = "form-control changeCantidad", //changeCantidad: clase.
-               data_libroid = item.Producto.ID, //data_libroid: variables para html.
+               data_productoid = item.Producto.ID, //data_productoid: variables para html.
                onchange = "updateCantProductos(this)" //onchange: Evento que llama una funcion de javascript.
                                                       //This: toda la caja de texto con el valor que indico el usuario
                                                       //updateCantidad: es una vista parcial. En Views/Orden/Index.cshtml **********
