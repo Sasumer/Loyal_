@@ -28,15 +28,15 @@
                             <div class="card-body">
 
                                 @Ajax.ActionLink("Ordenar",//Texto para el usuario
-                                      "ordenarProducto",//Acción a llamar
+                                      "ordenarLibro",//Acción a llamar
                                       "Orden",
                                       new
                                       {
-                                          idProducto = item.ID
+                                          idLibro = item.ID
                                       },//Parámetros a enviar
                                       new AjaxOptions
                                       {
-                                          UpdateTargetId = "cantidadProductos",
+                                          UpdateTargetId = "cantidadLibros",
                                           InsertionMode = InsertionMode.Replace,
                                           HttpMethod = "GET",
                                       }, new { @class = "btn btn-primary" }

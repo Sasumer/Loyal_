@@ -119,18 +119,18 @@
         </td>
         <td>
             @Ajax.ActionLink("Eliminar",//Texto para el usuario
-                "eliminarProducto",//Acción a llamar
+                "eliminarLibro",//Acción a llamar
                 "Orden",
                 new
                 {
-                    idProducto = item.IdProducto
+                    idLibro = item.IdProducto
                 },//Parámetros a enviar
                 new AjaxOptions
                 {
                     UpdateTargetId = "resultadoDetalle",
                     InsertionMode = InsertionMode.Replace,
                     HttpMethod = "GET",
-                    OnComplete = "updateCantProductos()" //orden/index
+                    OnComplete = "updateCantLibros()" //orden/index
                 }, new { @class = "btn btn-primary" }
                 )
 

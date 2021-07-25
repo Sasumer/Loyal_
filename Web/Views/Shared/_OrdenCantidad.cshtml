@@ -1,7 +1,7 @@
-﻿@{ int cantidadProductos = Web.ViewModel.Carrito.Instancia.GetCountItems();}
+﻿@{ int cantidadLibros = Web.ViewModel.Carrito.Instancia.GetCountItems();}
 
 <a href="@Url.Action("Index", "Orden")" class="nav-link">
-    Orden <span class="badge badge-light">   @cantidadProductos</span>
+    Orden <span class="badge badge-light">   @cantidadLibros</span>
 </a>
 
 @if (@ViewBag.NotiCarrito != null)

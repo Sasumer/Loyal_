@@ -70,30 +70,30 @@
         function updateCantidad(ctr) {
             var txtCantidad = $(ctr);
             var cantidad = txtCantidad.val();
-            var id = txtCantidad.data("productoid");
+            var id = txtCantidad.data("libroid");
             $.ajax({
                 type: "GET",
                 dataType: 'text',
                 url: "/Orden/actualizarCantidad",
-                data: { "productoid": id, "cantidad": cantidad },
+                data: { "idLibro": id, "cantidad": cantidad },
                 success: function (data) {
                     $("#resultadoDetalle").html('');
                     $("#resultadoDetalle").html(data);
-                    updateCantProductos();
+                    updateCantLibros();
                 }, error: function (xhr, status, error) {
                     console.log("Error: " + error + ", No Error: " + xhr.status);
                 },
             });
         }
         //Actualizar cantidad de libros en el menú
-        function updateCantProductos() {
+        function updateCantLibros() {
             $.ajax({
                 type: "GET",
                 dataType: 'text',
                 url: "/Orden/actualizarOrdenCantidad",
                 success: function (data) {
-                    $("#cantidadProductos").html('');
-                    $("#cantidadProductos").html(data);
+                    $("#cantidadLibros").html('');
+                    $("#cantidadLibros").html(data);
                 }, error: function (xhr, status, error) {
                     console.log("Error: " + error + ", No Error: " + xhr.status);
                 },
