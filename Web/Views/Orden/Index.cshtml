@@ -1,8 +1,8 @@
 ﻿@model Infraestructure.Models.ENC_FACTURA
+
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Orden de Producto</h2>
 @using (Html.BeginForm("Save", "Orden", FormMethod.Post))
 {
@@ -30,21 +30,7 @@
                 </div>
 
             </div>
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ID_TIPO_FACTURA, htmlAttributes: new { @class = "col-form-label " })
-                    <div class="col-md-12">
-                        @Html.DropDownListFor(model => model.ID_TIPO_FACTURA, (SelectList)ViewBag.idTipoFactura, " Seleccione un Tipo de Factura ", htmlAttributes: new { @class = "mw-100 form-control " })
-                        @Html.ValidationMessageFor(model => model.ID_TIPO_FACTURA, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-
         </div>
-
-
     </div>
 
     <hr />
@@ -57,7 +43,7 @@
         else
         {
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                La orden no tiene Productos asignados
+                La orden no tiene libros asignados
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -81,19 +67,19 @@
 
         //Actualizar cantidad de libros en el carrito
         //Cambio de cantidad en caja de texto
-        function updateCantidad(ctr) { //del _DetalleOrden
-            var txtCantidad = $(ctr); //jquery
+        function updateCantidad(ctr) {
+            var txtCantidad = $(ctr);
             var cantidad = txtCantidad.val();
             var id = txtCantidad.data("productoid");
             $.ajax({
                 type: "GET",
                 dataType: 'text',
                 url: "/Orden/actualizarCantidad",
-                data: { "idProducto": id, "cantidad": cantidad },
+                data: { "productoid": id, "cantidad": cantidad },
                 success: function (data) {
                     $("#resultadoDetalle").html('');
                     $("#resultadoDetalle").html(data);
-                    updateCantProductos(); //llama a otro metodo
+                    updateCantProductos();
                 }, error: function (xhr, status, error) {
                     console.log("Error: " + error + ", No Error: " + xhr.status);
                 },
@@ -104,7 +90,7 @@
             $.ajax({
                 type: "GET",
                 dataType: 'text',
-                url: "/Orden/actualizarOrdenCantidad", //actualiza el carrito y muestra la notificacion
+                url: "/Orden/actualizarOrdenCantidad",
                 success: function (data) {
                     $("#cantidadProductos").html('');
                     $("#cantidadProductos").html(data);
@@ -117,3 +103,5 @@
 
     </script>
 }
+
+

@@ -1,5 +1,4 @@
 ﻿@model Infraestructure.Models.PRODUCTO
-
 @{
     ViewBag.Title = "Detalle productos";
 }
@@ -30,12 +29,18 @@
                         <ul>
                             @foreach (var c in Model.PRODUCTO_UBICACION)
                             {
-                                <li>@Html.DisplayFor(modelItem=>c.UBICACION.DESCRIPCION)</li> 
+                                <li>@Html.DisplayFor(modelItem => c.UBICACION.DESCRIPCION)</li>
+
                             }
                         </ul>
                     </div>
                     <p class="card-text mb-auto">
-                        <b>@Html.DisplayNameFor(model => model.LOG_ACTIVO):</b> @Html.DisplayFor(model => model.LOG_ACTIVO)<br />
+                        @*<b>@Html.DisplayNameFor(model => model.LOG_ACTIVO):</b> @Html.DisplayFor(model => model.LOG_ACTIVO)<br />*@
+                        <b>@Html.DisplayNameFor(model => model.LOG_ACTIVO):</b> @Html.DisplayTextFor(model => model.LOG_ACTIVO)<br />
+                        @*<b>@Html.DisplayNameFor(model => model.LOG_ACTIVO):</b> @Html.DisplayFor(model => model.LOG_ACTIVO )<br />*@
+                        @*@Html.DisplayNameFor(model => model.FECHA_VENCIMIENTO, new { htmlAttributes = new { @class = "datepicker" } })*@
+                        @*@Html.EditorFor(model => model.FECHA_VENCIMIENTO, new { htmlAttributes = new { @class = "datepicker" } })*@
+
                         <b>@Html.DisplayNameFor(model => model.FECHA_VENCIMIENTO):</b> @Html.DisplayFor(model => model.FECHA_VENCIMIENTO)<br />
 
                         <b>@Html.DisplayNameFor(model => model.COSTO):</b> @Html.DisplayFor(model => model.COSTO)<br />

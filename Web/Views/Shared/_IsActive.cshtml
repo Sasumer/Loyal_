@@ -1,0 +1,9 @@
+﻿@model Nullable<bool>
+@if (Model == true)
+{
+    @Html.Raw("Activo")
+}
+@if (Model == false)
+{
+    @Html.Raw("Inactivo")
+}

@@ -48,32 +48,67 @@
             </div>*@
 
 
-            <div class="col-md-12">
+            @*<div class="col-md-12">
                 @foreach (var c in item.Producto.PRODUCTO_UBICACION)
                 {
                     @Html.DisplayFor(modelItem => c.UBICACION.DESCRIPCION)
                 }
-            </div>
+            </div>*@
+            @*<div class="form-group">*@
+            @*@Html.LabelFor(model => model.PRODUCTO_UBICACION, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-12">
+                @foreach (var c in item.Producto.PRODUCTO_UBICACION)
+                {
+                    @*@Html.DisplayFor(modelItem => c.UBICACION.DESCRIPCION)*@
+                    @Html.EditorFor(modelItem => c.UBICACION.DESCRIPCION, new
+                {
+                    htmlAttributes = new
+                    {
+               @class = "form-control changeUbicacion",
+               data_productoid = item.Producto.ID,
+               onchange = "updateUbicacion(this)"
+                    }
+                })
+                }
 
+
+
+                @*@Html.DropDownList("selectedUbicaciones",
+                (MultiSelectList)ViewBag.IdUbicaciones,
+                new { htmlAttributes = new { @class = "form-control" }, multiple = "multiple" })*@
+
+            </div>
+            @*</div>*@
         </td>
         <!--<td>-->
-            @*@Html.HiddenFor(modelItem => item.Producto.ID)*@
-            @*@Html.DisplayFor(modelItem => item.Producto.PROVEEDOR.)*@
+        @*@Html.HiddenFor(modelItem => item.Producto.ID)*@
+        @*@Html.DisplayFor(modelItem => item.Producto.PROVEEDOR.)*@
         <!--</td>-->
-
+        @*<td class="center" style="width:1.5em">
+             @Html.EditorFor(modelItem => item.Cantidad, new
+        {
+            htmlAttributes = new
+            {
+                @class = "form-control changeCantidad", //changeCantidad: clase.
+                data_productoid = item.Producto.ID, //data_productoid: variables para html.
+                onchange = "updateCantidad(this)" //onchange: Evento que llama una funcion de javascript.
+                                                  //This: toda la caja de texto con el valor que indico el usuario
+                                                  //updateCantidad: es una vista parcial. En Views/Orden/Index.cshtml **********
+            }
+        })
+        </td>*@
         <td class="center" style="width:1.5em">
             @Html.EditorFor(modelItem => item.Cantidad, new
-       {
+            {
            htmlAttributes = new
-           {
-               @class = "form-control changeCantidad", //changeCantidad: clase.
-               data_productoid = item.Producto.ID, //data_productoid: variables para html.
-               onchange = "updateCantProductos(this)" //onchange: Evento que llama una funcion de javascript.
-                                                      //This: toda la caja de texto con el valor que indico el usuario
-                                                      //updateCantidad: es una vista parcial. En Views/Orden/Index.cshtml **********
-           }
-       })
+                {
+                    @class = "form-control changeCantidad",
+           data_libroid = item.Producto.ID,
+                    onchange = "updateCantidad(this)"
+                }
+            })
         </td>
+
         <td class="right">
 
             @Html.DisplayFor(modelItem => item.Precio)

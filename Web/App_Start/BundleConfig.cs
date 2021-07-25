@@ -13,6 +13,17 @@ namespace Web
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
+            //AÑADIDO=====================================================================
+            //Jqueryui
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                      "~/Scripts/jquery-ui.js"
+                      ));
+
+            //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+            //            "~/Scripts/jquery.validate*"));
+            // SweetAlert
+            bundles.Add(new ScriptBundle("~/bundles/sweetalert").Include("~/Scripts/sweetalert.min.js"));
+            //FIN AÑADIDO====================================================================
             //jQuery.Unobtrusive
             bundles.Add(new ScriptBundle("~/bundles/jqueryajax").Include(
                        "~/Scripts/jquery.unobtrusive*"));
@@ -27,7 +38,7 @@ namespace Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                      "~/Content/bootstrap-minty.min.css",
                       "~/Content/jquery-ui.css", "~/Content/sweetalert.css",
-                      "~/Content/index.css"));
+                      "~/Content/index.css")); //ESTE ULTIMO NO LO TIENE EL DE LA PROFE
         }
     }
 }

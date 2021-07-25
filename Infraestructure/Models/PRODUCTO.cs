@@ -11,7 +11,9 @@ namespace Infraestructure.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    [MetadataType(typeof(ProductoMetadata))]
+
     public partial class PRODUCTO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,6 +29,7 @@ namespace Infraestructure.Models
         public string DESCRIPCION { get; set; }
         public byte[] PHOTO { get; set; }
         public Nullable<int> CANTIDAD_MINIMA { get; set; }
+        [UIHint("_IsActive")]
         public Nullable<bool> LOG_ACTIVO { get; set; }
         public string ID_USUARIO_INGRESA { get; set; }
         public string FECHA_AGREGA { get; set; }

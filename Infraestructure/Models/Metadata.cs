@@ -46,6 +46,8 @@ namespace Infraestructure.Models
 
         [Required(ErrorMessage = "El estado es obligatorio")]
         [Display(Name = "Estado (Activo)")]
+
+        [UIHint("_IsActive")]
         public Nullable<bool> LOG_ACTIVO { get; set; }
 
         public string ID_USUARIO_INGRESA { get; set; }
