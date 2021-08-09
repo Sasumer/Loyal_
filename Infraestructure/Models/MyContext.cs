@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Models
 {
-    public class MyContext: LoyalEntities1
+    public class MyContext: LoyalEntities
     {
         public MyContext() { }
     }

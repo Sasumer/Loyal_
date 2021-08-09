@@ -34,6 +34,7 @@ namespace Infraestructure.Models
         public int ID_ROL { get; set; }
         public Nullable<bool> Activo { get; set; }
 
+
         public string ISActive
         {
             get
@@ -41,8 +42,6 @@ namespace Infraestructure.Models
                 return (bool)this.Activo ? "Activo" : "Inactivo";
             }
         }
-
-
 
         public string Telefono { get; set; }
     

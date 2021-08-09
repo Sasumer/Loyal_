@@ -19,7 +19,6 @@ namespace Infraestructure.Models
         public Nullable<int> CANTIDAD { get; set; }
         public Nullable<decimal> PRECIO { get; set; }
         public string ID_UBICACION { get; set; }
-        public string Comentario { get; set; }
     
         public virtual ENC_FACTURA ENC_FACTURA { get; set; }
         public virtual PRODUCTO PRODUCTO { get; set; }

@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0410a91c043145deb40fc0f7975c7051" Name="Diagram1">
-        <EntityTypeShape EntityType="LoyalModel.DETALLE_FACTURA" Width="1.5" PointX="10.5" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LoyalModel.ENC_FACTURA" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+      <Diagram DiagramId="141ae61a216f49849e540e97ecf2ce46" Name="Diagram1">
+        <EntityTypeShape EntityType="LoyalModel.DETALLE_FACTURA" Width="1.5" PointX="10.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoyalModel.ENC_FACTURA" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LoyalModel.PRODUCTO" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LoyalModel.PRODUCTO_UBICACION" Width="1.5" PointX="13.5" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="LoyalModel.PROVEEDOR" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />

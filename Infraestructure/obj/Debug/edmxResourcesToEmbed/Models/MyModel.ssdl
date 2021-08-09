@@ -10,7 +10,6 @@
     <Property Name="CANTIDAD" Type="int" />
     <Property Name="PRECIO" Type="money" />
     <Property Name="ID_UBICACION" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="Comentario" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="ENC_FACTURA">
     <Key>
@@ -20,6 +19,7 @@
     <Property Name="FECHA" Type="varchar" MaxLength="50" />
     <Property Name="ID_USUARIO" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="ID_TIPO_FACTURA" Type="int" Nullable="false" />
+    <Property Name="Comentario" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="PRODUCTO">
     <Key>

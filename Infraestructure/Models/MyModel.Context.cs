@@ -13,10 +13,10 @@ namespace Infraestructure.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LoyalEntities1 : DbContext
+    public partial class LoyalEntities : DbContext
     {
-        public LoyalEntities1()
-            : base("name=LoyalEntities1")
+        public LoyalEntities()
+            : base("name=LoyalEntities")
         {
         }
     

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="LoyalModelStoreContainer" CdmEntityContainer="LoyalEntities1">
+  <EntityContainerMapping StorageEntityContainer="LoyalModelStoreContainer" CdmEntityContainer="LoyalEntities">
     <EntitySetMapping Name="DETALLE_FACTURA">
       <EntityTypeMapping TypeName="LoyalModel.DETALLE_FACTURA">
         <MappingFragment StoreEntitySet="DETALLE_FACTURA">
@@ -9,7 +9,6 @@
           <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
           <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
           <ScalarProperty Name="ID_UBICACION" ColumnName="ID_UBICACION" />
-          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -20,6 +19,7 @@
           <ScalarProperty Name="FECHA" ColumnName="FECHA" />
           <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
           <ScalarProperty Name="ID_TIPO_FACTURA" ColumnName="ID_TIPO_FACTURA" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -10,7 +10,6 @@
     <Property Name="CANTIDAD" Type="Int32" />
     <Property Name="PRECIO" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="ID_UBICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Comentario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ENC_FACTURA" Relationship="Self.FK_DETALLE_FACTURA_ENC_FACTURA" FromRole="DETALLE_FACTURA" ToRole="ENC_FACTURA" />
     <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_DETALLE_FACTURA_PRODUCTO" FromRole="DETALLE_FACTURA" ToRole="PRODUCTO" />
     <NavigationProperty Name="UBICACION" Relationship="Self.FK_DETALLE_FACTURA_UBICACION" FromRole="DETALLE_FACTURA" ToRole="UBICACION" />
@@ -23,6 +22,7 @@
     <Property Name="FECHA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ID_USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ID_TIPO_FACTURA" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="DETALLE_FACTURA" Relationship="Self.FK_DETALLE_FACTURA_ENC_FACTURA" FromRole="ENC_FACTURA" ToRole="DETALLE_FACTURA" />
     <NavigationProperty Name="TIPO_FACTURA" Relationship="Self.FK_ENC_FACTURA_TIPO_FACTURA" FromRole="ENC_FACTURA" ToRole="TIPO_FACTURA" />
     <NavigationProperty Name="USUARIO" Relationship="Self.FK_ENC_FACTURA_USUARIO" FromRole="ENC_FACTURA" ToRole="USUARIO" />
@@ -276,7 +276,7 @@
     <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="*" />
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="LoyalEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="LoyalEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="DETALLE_FACTURA" EntityType="Self.DETALLE_FACTURA" />
     <EntitySet Name="ENC_FACTURA" EntityType="Self.ENC_FACTURA" />
     <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />

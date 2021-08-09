@@ -26,6 +26,7 @@ namespace Infraestructure.Models
         public string FECHA { get; set; }
         public string ID_USUARIO { get; set; }
         public int ID_TIPO_FACTURA { get; set; }
+        public string Comentario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
