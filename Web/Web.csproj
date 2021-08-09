@@ -383,6 +383,8 @@
     <Content Include="Views\Producto\_IsActive.cshtml" />
     <Content Include="Views\Orden\Index.cshtml" />
     <Content Include="Views\Shared\_OrdenCantidad.cshtml" />
+    <Content Include="Views\Shared\IsActive.cshtml" />
+    <Content Include="Views\Usuario\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

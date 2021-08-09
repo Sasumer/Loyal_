@@ -70,7 +70,7 @@ namespace Infraestructure.Repository
                     ctx.Configuration.LazyLoadingEnabled = false;
                     //Esto es un "Select * from Autor".
                     //lista = ctx.USUARIO.ToList<USUARIO>();
-                    oUSUARIO = ctx.USUARIO.Where(p => p.ID == id + "").Include(u => u.Telefono).Include(p => p.ROL).FirstOrDefault();
+                    oUSUARIO = ctx.USUARIO.Where(p => p.ID == id + "").Include(p => p.ROL).FirstOrDefault();
                     //.Include(p => p.USUARIO_ROL).Include("USUARIO_ROL.USUARIO").FirstOrDefault();
 
                 }
@@ -154,6 +154,17 @@ namespace Infraestructure.Repository
                     retorno = ctx.SaveChanges();
                     //retorna número de filas afectadas
                 }
+                else
+                {
+                    ctx.USUARIO.Add(usuario);
+                    ctx.Entry(usuario).State = EntityState.Modified;
+                    retorno = ctx.SaveChanges();
+                    //Actualizar Categorias
+
+
+                }
+
+
 
             }
 

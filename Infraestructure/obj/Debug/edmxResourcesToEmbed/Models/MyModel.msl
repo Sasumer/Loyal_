@@ -9,6 +9,7 @@
           <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
           <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
           <ScalarProperty Name="ID_UBICACION" ColumnName="ID_UBICACION" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -79,17 +80,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Telefono">
-      <EntityTypeMapping TypeName="LoyalModel.Telefono">
-        <MappingFragment StoreEntitySet="Telefono">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Numero_telefono" ColumnName="Numero_telefono" />
-          <ScalarProperty Name="Id_usuario" ColumnName="Id_usuario" />
-          <ScalarProperty Name="Log_activo" ColumnName="Log_activo" />
-          <ScalarProperty Name="Id_tipo_numero" ColumnName="Id_tipo_numero" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TIPO_FACTURA">
       <EntityTypeMapping TypeName="LoyalModel.TIPO_FACTURA">
         <MappingFragment StoreEntitySet="TIPO_FACTURA">
@@ -104,15 +94,6 @@
         <MappingFragment StoreEntitySet="TIPO_PRODUCTO">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Tipo_Telefono">
-      <EntityTypeMapping TypeName="LoyalModel.Tipo_Telefono">
-        <MappingFragment StoreEntitySet="Tipo_Telefono">
-          <ScalarProperty Name="Id_tipo_telefono" ColumnName="Id_tipo_telefono" />
-          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-          <ScalarProperty Name="Log_activo" ColumnName="Log_activo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -135,6 +116,7 @@
           <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
           <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

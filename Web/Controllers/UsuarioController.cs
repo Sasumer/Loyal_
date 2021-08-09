@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Web.Util;
 using Infraestructure.Models;
 using Web.Security;
+using System.ComponentModel.DataAnnotations;
 
 namespace Web.Controllers
 {
@@ -119,22 +120,6 @@ namespace Web.Controllers
             return new SelectList(listaRoles, "ID", "DESCRIPCION", idRol);
         }
 
-        private MultiSelectList listaTelefonos(ICollection<Telefono> telefono)
-        {
-            //Lista de Categorias
-            IServiceTelefono _ServiceTelefono = new ServiceTelefono();
-            IEnumerable<Telefono> listaTelefonos = _ServiceTelefono.GetTelefono();
-            string[] listaTelefonoSelect = null;
-
-            if (telefono != null)
-            {
-
-                listaTelefonoSelect = telefono.Select(c => c.ID + "").ToArray();
-            }
-
-            return new MultiSelectList(listaTelefonos, "ID", "Numero_telefono", listaTelefonoSelect);
-
-        }
         [CustomAuthorize((int)Roles.Administrador)]
         public ActionResult Create()
         {
@@ -145,6 +130,8 @@ namespace Web.Controllers
         // POST: USUARIO/Create
         [HttpPost]
         [CustomAuthorize((int)Roles.Administrador)]
+
+
         public ActionResult Create(FormCollection collection)
         {
             try
@@ -184,7 +171,7 @@ namespace Web.Controllers
                 }
                 //sem 5: =============================
                 //ViewBag.IdUsuarioRol = listaRoles(usuario.USUARIO_ROL);
-                ViewBag.IdTelefono = listaTelefonos(usuario.Telefono);
+                //ViewBag.IdTelefono = listaTelefonos(usuario.Telefono);
                 //fin sem 5===========================
                 return View(usuario);
             }
@@ -338,7 +325,6 @@ namespace Web.Controllers
                 return RedirectToAction("Default", "Error");
             }
         }
-
 
 
     }

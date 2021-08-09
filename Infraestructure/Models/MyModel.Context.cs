@@ -32,10 +32,8 @@ namespace Infraestructure.Models
         public virtual DbSet<PROVEEDOR> PROVEEDOR { get; set; }
         public virtual DbSet<ROL> ROL { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Telefono> Telefono { get; set; }
         public virtual DbSet<TIPO_FACTURA> TIPO_FACTURA { get; set; }
         public virtual DbSet<TIPO_PRODUCTO> TIPO_PRODUCTO { get; set; }
-        public virtual DbSet<Tipo_Telefono> Tipo_Telefono { get; set; }
         public virtual DbSet<UBICACION> UBICACION { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
     }

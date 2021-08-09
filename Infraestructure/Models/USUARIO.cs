@@ -12,6 +12,7 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     [MetadataType(typeof(UsuarioMetadata))]
     public partial class USUARIO
     {
@@ -21,7 +22,6 @@ namespace Infraestructure.Models
             this.ENC_FACTURA = new HashSet<ENC_FACTURA>();
             this.PRODUCTO = new HashSet<PRODUCTO>();
             this.PRODUCTO1 = new HashSet<PRODUCTO>();
-            this.Telefono = new HashSet<Telefono>();
             this.PROVEEDOR = new HashSet<PROVEEDOR>();
         }
     
@@ -33,6 +33,18 @@ namespace Infraestructure.Models
         public string Apellido2 { get; set; }
         public int ID_ROL { get; set; }
         public Nullable<bool> Activo { get; set; }
+
+        public string ISActive
+        {
+            get
+            {
+                return (bool)this.Activo ? "Activo" : "Inactivo";
+            }
+        }
+
+
+
+        public string Telefono { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ENC_FACTURA> ENC_FACTURA { get; set; }
@@ -41,8 +53,6 @@ namespace Infraestructure.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCTO> PRODUCTO1 { get; set; }
         public virtual ROL ROL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Telefono> Telefono { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PROVEEDOR> PROVEEDOR { get; set; }
     }

@@ -10,6 +10,7 @@
     <Property Name="CANTIDAD" Type="int" />
     <Property Name="PRECIO" Type="money" />
     <Property Name="ID_UBICACION" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Comentario" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="ENC_FACTURA">
     <Key>
@@ -89,16 +90,6 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <EntityType Name="Telefono">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Numero_telefono" Type="varchar" MaxLength="50" />
-    <Property Name="Id_usuario" Type="varchar" MaxLength="20" />
-    <Property Name="Log_activo" Type="bit" />
-    <Property Name="Id_tipo_numero" Type="int" />
-  </EntityType>
   <EntityType Name="TIPO_FACTURA">
     <Key>
       <PropertyRef Name="ID" />
@@ -113,14 +104,6 @@
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="20" />
-  </EntityType>
-  <EntityType Name="Tipo_Telefono">
-    <Key>
-      <PropertyRef Name="Id_tipo_telefono" />
-    </Key>
-    <Property Name="Id_tipo_telefono" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="descripcion" Type="varchar" MaxLength="50" />
-    <Property Name="Log_activo" Type="bit" />
   </EntityType>
   <EntityType Name="UBICACION">
     <Key>
@@ -141,6 +124,7 @@
     <Property Name="Apellido2" Type="varchar" MaxLength="50" />
     <Property Name="ID_ROL" Type="int" Nullable="false" />
     <Property Name="Activo" Type="bit" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_DETALLE_FACTURA_ENC_FACTURA">
     <End Role="ENC_FACTURA" Type="Self.ENC_FACTURA" Multiplicity="1" />
@@ -286,30 +270,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_telefono_usuario">
-    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
-    <End Role="Telefono" Type="Self.Telefono" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="USUARIO">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Telefono">
-        <PropertyRef Name="Id_usuario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tipo_telefono">
-    <End Role="Tipo_Telefono" Type="Self.Tipo_Telefono" Multiplicity="0..1" />
-    <End Role="Telefono" Type="Self.Telefono" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tipo_Telefono">
-        <PropertyRef Name="Id_tipo_telefono" />
-      </Principal>
-      <Dependent Role="Telefono">
-        <PropertyRef Name="Id_tipo_numero" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_USUARIO_EDITA">
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
     <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
@@ -356,10 +316,8 @@
     <EntitySet Name="PROVEEDOR_USUARIO" EntityType="Self.PROVEEDOR_USUARIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Telefono" EntityType="Self.Telefono" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TIPO_FACTURA" EntityType="Self.TIPO_FACTURA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TIPO_PRODUCTO" EntityType="Self.TIPO_PRODUCTO" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Tipo_Telefono" EntityType="Self.Tipo_Telefono" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UBICACION" EntityType="Self.UBICACION" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_DETALLE_FACTURA_ENC_FACTURA" Association="Self.FK_DETALLE_FACTURA_ENC_FACTURA">
@@ -409,14 +367,6 @@
     <AssociationSet Name="FK_PROVEEDOR_USUARIO_USUARIO" Association="Self.FK_PROVEEDOR_USUARIO_USUARIO">
       <End Role="USUARIO" EntitySet="USUARIO" />
       <End Role="PROVEEDOR_USUARIO" EntitySet="PROVEEDOR_USUARIO" />
-    </AssociationSet>
-    <AssociationSet Name="FK_telefono_usuario" Association="Self.FK_telefono_usuario">
-      <End Role="USUARIO" EntitySet="USUARIO" />
-      <End Role="Telefono" EntitySet="Telefono" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tipo_telefono" Association="Self.FK_tipo_telefono">
-      <End Role="Tipo_Telefono" EntitySet="Tipo_Telefono" />
-      <End Role="Telefono" EntitySet="Telefono" />
     </AssociationSet>
     <AssociationSet Name="FK_USUARIO_EDITA" Association="Self.FK_USUARIO_EDITA">
       <End Role="USUARIO" EntitySet="USUARIO" />

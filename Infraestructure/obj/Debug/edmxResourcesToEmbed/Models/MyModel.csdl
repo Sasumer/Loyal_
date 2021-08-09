@@ -10,6 +10,7 @@
     <Property Name="CANTIDAD" Type="Int32" />
     <Property Name="PRECIO" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="ID_UBICACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ENC_FACTURA" Relationship="Self.FK_DETALLE_FACTURA_ENC_FACTURA" FromRole="DETALLE_FACTURA" ToRole="ENC_FACTURA" />
     <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_DETALLE_FACTURA_PRODUCTO" FromRole="DETALLE_FACTURA" ToRole="PRODUCTO" />
     <NavigationProperty Name="UBICACION" Relationship="Self.FK_DETALLE_FACTURA_UBICACION" FromRole="DETALLE_FACTURA" ToRole="UBICACION" />
@@ -90,18 +91,6 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="Telefono">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Numero_telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Id_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Log_activo" Type="Boolean" />
-    <Property Name="Id_tipo_numero" Type="Int32" />
-    <NavigationProperty Name="USUARIO" Relationship="Self.FK_telefono_usuario" FromRole="Telefono" ToRole="USUARIO" />
-    <NavigationProperty Name="Tipo_Telefono" Relationship="Self.FK_tipo_telefono" FromRole="Telefono" ToRole="Tipo_Telefono" />
-  </EntityType>
   <EntityType Name="TIPO_FACTURA">
     <Key>
       <PropertyRef Name="ID" />
@@ -118,15 +107,6 @@
     <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="DESCRIPCION" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_PRODUCTO_TIPO_PRODUCTO" FromRole="TIPO_PRODUCTO" ToRole="PRODUCTO" />
-  </EntityType>
-  <EntityType Name="Tipo_Telefono">
-    <Key>
-      <PropertyRef Name="Id_tipo_telefono" />
-    </Key>
-    <Property Name="Id_tipo_telefono" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Log_activo" Type="Boolean" />
-    <NavigationProperty Name="Telefono" Relationship="Self.FK_tipo_telefono" FromRole="Tipo_Telefono" ToRole="Telefono" />
   </EntityType>
   <EntityType Name="UBICACION">
     <Key>
@@ -149,11 +129,11 @@
     <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ID_ROL" Type="Int32" Nullable="false" />
     <Property Name="Activo" Type="Boolean" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ENC_FACTURA" Relationship="Self.FK_ENC_FACTURA_USUARIO" FromRole="USUARIO" ToRole="ENC_FACTURA" />
     <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_USUARIO_EDITA" FromRole="USUARIO" ToRole="PRODUCTO" />
     <NavigationProperty Name="PRODUCTO1" Relationship="Self.FK_USUARIO_INGRESA" FromRole="USUARIO" ToRole="PRODUCTO" />
     <NavigationProperty Name="ROL" Relationship="Self.FK_USUARIO_ROL" FromRole="USUARIO" ToRole="ROL" />
-    <NavigationProperty Name="Telefono" Relationship="Self.FK_telefono_usuario" FromRole="USUARIO" ToRole="Telefono" />
     <NavigationProperty Name="PROVEEDOR" Relationship="Self.PROVEEDOR_USUARIO" FromRole="USUARIO" ToRole="PROVEEDOR" />
   </EntityType>
   <Association Name="FK_DETALLE_FACTURA_ENC_FACTURA">
@@ -288,30 +268,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_telefono_usuario">
-    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
-    <End Role="Telefono" Type="Self.Telefono" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="USUARIO">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Telefono">
-        <PropertyRef Name="Id_usuario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tipo_telefono">
-    <End Role="Tipo_Telefono" Type="Self.Tipo_Telefono" Multiplicity="0..1" />
-    <End Role="Telefono" Type="Self.Telefono" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tipo_Telefono">
-        <PropertyRef Name="Id_tipo_telefono" />
-      </Principal>
-      <Dependent Role="Telefono">
-        <PropertyRef Name="Id_tipo_numero" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="PRODUCTO_PROVEEDOR">
     <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
     <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="*" />
@@ -328,10 +284,8 @@
     <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" />
     <EntitySet Name="ROL" EntityType="Self.ROL" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="Telefono" EntityType="Self.Telefono" />
     <EntitySet Name="TIPO_FACTURA" EntityType="Self.TIPO_FACTURA" />
     <EntitySet Name="TIPO_PRODUCTO" EntityType="Self.TIPO_PRODUCTO" />
-    <EntitySet Name="Tipo_Telefono" EntityType="Self.Tipo_Telefono" />
     <EntitySet Name="UBICACION" EntityType="Self.UBICACION" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
     <AssociationSet Name="FK_DETALLE_FACTURA_ENC_FACTURA" Association="Self.FK_DETALLE_FACTURA_ENC_FACTURA">
@@ -377,14 +331,6 @@
     <AssociationSet Name="FK_USUARIO_ROL" Association="Self.FK_USUARIO_ROL">
       <End Role="ROL" EntitySet="ROL" />
       <End Role="USUARIO" EntitySet="USUARIO" />
-    </AssociationSet>
-    <AssociationSet Name="FK_telefono_usuario" Association="Self.FK_telefono_usuario">
-      <End Role="USUARIO" EntitySet="USUARIO" />
-      <End Role="Telefono" EntitySet="Telefono" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tipo_telefono" Association="Self.FK_tipo_telefono">
-      <End Role="Tipo_Telefono" EntitySet="Tipo_Telefono" />
-      <End Role="Telefono" EntitySet="Telefono" />
     </AssociationSet>
     <AssociationSet Name="PRODUCTO_PROVEEDOR" Association="Self.PRODUCTO_PROVEEDOR">
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />

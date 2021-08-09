@@ -24,22 +24,8 @@
                         <div class="mb-1 text-muted"><b>@Html.DisplayNameFor(model => model.Apellido1):</b> @Html.DisplayFor(model => model.Apellido1)</div>
                         <div class="mb-1 text-muted"><b>@Html.DisplayNameFor(model => model.Apellido2):</b> @Html.DisplayFor(model => model.Apellido2)</div>
                         <div class="mb-1 text-muted"><b>@Html.DisplayNameFor(model => model.Activo):</b> @Html.DisplayFor(model => model.Activo)</div>
-
-                        <div class="mb-1 text-muted">
-                            <b>@Html.DisplayNameFor(model => model.USUARIO_ROL):</b>
-                            <ul>
-                                @foreach (var c in Model.USUARIO_ROL)
-                                {
-
-                                    <li>Contacto</li>
-                                   <li>@Html.DisplayFor(modelItem=>c.ROL.DESCRIPCION)</li> 
-
-
-                                }
-
-
-                            </ul>
-                        </div>
+                        <div class="mb-1 text-muted"><b>@Html.DisplayNameFor(model => model.ROL):</b> @Html.DisplayFor(model => model.ROL.DESCRIPCION)</div>
+                     
                     </div>
 
                 </div>

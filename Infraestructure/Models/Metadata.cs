@@ -90,6 +90,9 @@ namespace Infraestructure.Models
         [Required(ErrorMessage = "Proveedor(es) es obligatorio")]
         [Display(Name = "Proveedor(es)")]
         public virtual ICollection<PROVEEDOR> PROVEEDOR { get; set; }
+
+
+
     }
 
     internal partial class ProveedorMetadata
@@ -137,6 +140,8 @@ namespace Infraestructure.Models
         public virtual TIPO_FACTURA TIPO_FACTURA { get; set; }
         public virtual USUARIO USUARIO { get; set; }
 
+
+
     }
 
     internal partial class UsuarioMetadata
@@ -165,16 +170,16 @@ namespace Infraestructure.Models
 
         //[Required(ErrorMessage = "El Estado es obligatorio")]
         [Display(Name = "Estado")]
+ 
+        [UIHint("IsActive")]
         public Nullable<bool> Activo { get; set; }
-
-
         public virtual ICollection<ENC_FACTURA> ENC_FACTURA { get; set; }
 
         public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
 
         public virtual ICollection<PRODUCTO> PRODUCTO1 { get; set; }
 
-        public virtual ICollection<Telefono> Telefono { get; set; }
+
 
        
         public virtual ICollection<PROVEEDOR> PROVEEDOR { get; set; }

@@ -96,6 +96,8 @@ namespace Web.Controllers
             }
         }
 
+
+
         // GET: Orden/Details/5
         public ActionResult Details(int? id)
         {

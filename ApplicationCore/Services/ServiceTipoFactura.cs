@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Services
 {
-    public class ServiceTipoFactura : IServiceTipoFactura
-    {
-        public TIPO_FACTURA GetTipoFacturaByID(int id)
-        {
-            IRepositoryTipoFactura repository = new RepositoryTipoFactura();
-            return repository.GetTipoFacturaByID(id);
-        }
+    //public class ServiceTipoFactura : IServiceTipoFactura
+    //{
+    //    //public TIPO_FACTURA GetTipoFacturaByID(int id)
+    //    //{
+    //    //    IRepositoryTipoFactura repository = new RepositoryTipoFactura();
+    //    //    return repository.GetTipoFacturaByID(id);
+    //    //}
 
-        public IEnumerable<TIPO_FACTURA> GetTipoFacturao()
-        {
-            IRepositoryTipoFactura repository = new RepositoryTipoFactura();
-            return repository.GetTipoFactura();
-        }
-    }
+    //    //public IEnumerable<TIPO_FACTURA> GetTipoFacturao()
+    //    //{
+    //    //    IRepositoryTipoFactura repository = new RepositoryTipoFactura();
+    //    //    return repository.GetTipoFactura();
+    //    //}
+    //}
 }

@@ -15,9 +15,7 @@
         <th>
             @Html.DisplayNameFor(model => model.correo_electronico)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.contrasenna)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
@@ -35,31 +33,29 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.correo_electronico)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.contrasenna)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Activo)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.correo_electronico)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Apellido1)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Apellido2)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ISActive)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
+    </td>
+</tr>
     }
 
 </table>

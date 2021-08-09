@@ -12,6 +12,7 @@ namespace Infraestructure.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     [MetadataType(typeof(EncFacturaMetadata))]
     public partial class ENC_FACTURA
     {
