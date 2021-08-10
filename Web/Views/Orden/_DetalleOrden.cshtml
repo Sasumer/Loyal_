@@ -61,14 +61,14 @@
                 {
                     @*@Html.DisplayFor(modelItem => c.UBICACION.DESCRIPCION)*@
                     @Html.EditorFor(modelItem => c.UBICACION.DESCRIPCION, new
-                {
-                    htmlAttributes = new
-                    {
-               @class = "form-control changeUbicacion",
-               data_productoid = item.Producto.ID,
-               onchange = "updateUbicacion(this)"
-                    }
-                })
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control changeUbicacion",
+                                data_productoid = item.Producto.ID,
+                                onchange = "updateUbicacion(this)"
+                            }
+                        })
                 }
 
 

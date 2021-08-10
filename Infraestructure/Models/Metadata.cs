@@ -146,22 +146,22 @@ namespace Infraestructure.Models
 
     internal partial class UsuarioMetadata
     {
-        [Required(ErrorMessage = "La Identificación es obligatorio")]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "* Solo se permiten números.")]
-        [StringLength(9, MinimumLength = 9, ErrorMessage = "El formato válido es 999999999")]
+        //[Required(ErrorMessage = "La Identificación es obligatorio")]
+        //[RegularExpression("^[0-9]*$", ErrorMessage = "* Solo se permiten números.")]
+        //[StringLength(9, MinimumLength = 9, ErrorMessage = "El formato válido es 999999999")]
         [Display(Name = "Identificación")]
         public string ID { get; set; }
 
-        [EmailAddress(ErrorMessage = "Debe ingresar un mail válido")]
+        //[EmailAddress(ErrorMessage = "Debe ingresar un mail válido")]
         [Display(Name = "Correo")]
         public string correo_electronico { get; set; }
 
-        [Required(ErrorMessage = "La Contraseña es obligatoria")]
+        //[Required(ErrorMessage = "La Contraseña es obligatoria")]
         [Display(Name = "Contraseña")]
         public string contrasenna { get; set; }
 
-        [Required(ErrorMessage = "El nombre es obligatorio")]
-        [MinLength(5, ErrorMessage = "El nombre debe tener al menos 5 caracteres")]
+        //[Required(ErrorMessage = "El nombre es obligatorio")]
+        //[MinLength(5, ErrorMessage = "El nombre debe tener al menos 5 caracteres")]
         [Display(Name = "Nombre")]
         public string Nombre { get; set; }
         [Display(Name = "Primer Apellido")]
@@ -169,10 +169,12 @@ namespace Infraestructure.Models
         [Display(Name = "Segundo Apellido")]
         public string Apellido2 { get; set; }
 
-        [Required(ErrorMessage = "El Estado es obligatorio")]
+        //[Required(ErrorMessage = "El Estado es obligatorio")]
         [Display(Name = "Estado")]
  
-        [UIHint("IsActive")]
+   
+
+
         public Nullable<bool> Activo { get; set; }
         public virtual ICollection<ENC_FACTURA> ENC_FACTURA { get; set; }
 

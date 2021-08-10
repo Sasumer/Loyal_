@@ -217,6 +217,7 @@ namespace Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
+
                     oUsuario = _ServiceUsuario.GetLoginUsuario(usuario.ID, usuario.contrasenna);
 
                     if (oUsuario != null)
@@ -232,8 +233,8 @@ namespace Web.Controllers
                         return RedirectToAction("Loguearse", "Home");
 
                     }
-                }
 
+                }
                 return View("Home", "Loguearse");
             }
             catch (Exception ex)
