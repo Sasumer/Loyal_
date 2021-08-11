@@ -385,6 +385,7 @@
     <Content Include="Views\Shared\_OrdenCantidad.cshtml" />
     <Content Include="Views\Shared\IsActive.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Producto\EditarXOrden.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

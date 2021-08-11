@@ -49,5 +49,11 @@ namespace ApplicationCore.Services
             IRepositoryProducto repository = new RepositoryProducto();
             return repository.Save(producto, selectedProveedores, selectedUbicaciones);
         }
+
+        public PRODUCTO SaveXOrden(PRODUCTO producto, string[] selectedProveedores, string[] selectedUbicaciones)
+        {
+            IRepositoryProducto repository = new RepositoryProducto();
+            return repository.SaveXOrden(producto, selectedProveedores, selectedUbicaciones);
+        }
     }
 }

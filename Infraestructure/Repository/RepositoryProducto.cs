@@ -239,5 +239,94 @@ namespace Infraestructure.Repository
         {
             throw new NotImplementedException();
         }
+
+        // ENTREGA FINAAAAAAAAAAAAAAAAALLLLLLLL=======================
+        public PRODUCTO SaveXOrden(PRODUCTO producto, string[] selectedProveedores, string[] selectedUbicaciones)
+        {
+            int retorno = 0;
+            PRODUCTO oProducto = null;
+
+            using (MyContext ctx = new MyContext())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                oProducto = GetProductoByID((String)producto.ID);
+                IRepositoryProveedor _RepositoryProveedor = new RepositoryProveedor();
+                //IRepositoryUbicacion _RepositoryUbicacion = new RepositoryUbicacion();
+
+                if (oProducto != null) // SI EXISTE
+                {
+                    producto.PRECIO_VENTA = oProducto.PRECIO_VENTA;
+                    producto.PHOTO = oProducto.PHOTO;
+                    producto.CANTIDAD_MINIMA = oProducto.CANTIDAD_MINIMA;
+                    producto.LOG_ACTIVO = oProducto.LOG_ACTIVO;
+                    producto.ID_USUARIO_INGRESA = oProducto.ID_USUARIO_INGRESA;
+                    producto.FECHA_AGREGA = oProducto.FECHA_AGREGA;
+                    producto.ID_USUARIO_EDITA = oProducto.ID_USUARIO_EDITA;
+                    producto.FECHA_EDITA = oProducto.FECHA_EDITA;
+                    producto.FECHA_VENCIMIENTO = oProducto.FECHA_VENCIMIENTO;
+                    producto.COSTO = oProducto.COSTO;
+                    producto.ID_TIPO_PRODUCTO = oProducto.ID_TIPO_PRODUCTO;
+
+                    //}
+                    //else
+                    //{
+                    //(mio) Ejemplo: debe sincrozinar cuales son nuevas, agregar y eliminar.
+                    //Registradas: 1,2,3
+                    //Actualizar: 1,3,4
+
+                    //PRIMERO Actualizar Libro
+                    ctx.PRODUCTO.Add(producto);
+                    ctx.Entry(producto).State = EntityState.Modified;
+                    retorno = ctx.SaveChanges();
+                    //SEGUNDO Actualizar Proveedores ====================================================================
+                    var selectedProveedoresID = new HashSet<string>(selectedProveedores);
+                    if (selectedProveedores != null)
+                    {
+                        //Obtengo las categorias que ya tiene:
+                        ctx.Entry(producto).Collection(p => p.PROVEEDOR).Load();
+                        //Aqui que sincronice, busque que hay nuevo, agregar y eliminar.
+                        var newProveedorForProducto = ctx.PROVEEDOR
+                         .Where(x => selectedProveedoresID.Contains(x.ID.ToString())).ToList();
+                        //hace las categorias en un listado
+                        producto.PROVEEDOR = newProveedorForProducto;
+
+                        ctx.Entry(producto).State = EntityState.Modified;
+                        retorno = ctx.SaveChanges(); //se guarda en el contexto
+                    }
+                    //SEGUNDO Actualizar Ubicaciones ===============================================================
+                    //idEstante arreglo de los identificadores de las ubicaciones o estantes
+                    if (selectedUbicaciones != null)
+                    {
+                        //Obtener los estantes registrados del producto a modificar
+                        List<PRODUCTO_UBICACION> estantesdelProducto = ctx.PRODUCTO_UBICACION.Where(x => x.ID_PRODUCTO == producto.ID).ToList();
+                        // Borrar los estantes existentes del producto
+                        foreach (var item in estantesdelProducto)
+                        {
+                            producto.PRODUCTO_UBICACION.Remove(item);
+                        }
+                        //Registrar los estantes especificados
+                        foreach (var ubicacion in selectedUbicaciones)
+                        {
+                            PRODUCTO_UBICACION prodUbi = new PRODUCTO_UBICACION();
+                            prodUbi.ID_PRODUCTO = producto.ID;
+                            prodUbi.ID_UBICACION = ubicacion;
+                            prodUbi.CANTIDAD = producto.CANTIDAD_MINIMA;
+                            ctx.PRODUCTO_UBICACION.Add(prodUbi);
+
+                        }
+
+                        ctx.Entry(producto).State = EntityState.Modified;
+                        retorno = ctx.SaveChanges();
+                    }
+                    //FIN =========================================================================================
+                }
+            }
+
+            if (retorno >= 0)
+                oProducto = GetProductoByID(producto.ID);
+
+            return oProducto;
+        }
+
     }
 }

@@ -17,5 +17,6 @@ namespace ApplicationCore.Services
 
         void DeleteProducto(int id);
         PRODUCTO Save(PRODUCTO producto, string[] selectedProveedores, string[] selectedUbicaciones);
+        PRODUCTO SaveXOrden(PRODUCTO producto, string[] selectedProveedores, string[] selectedUbicaciones);
     }
 }

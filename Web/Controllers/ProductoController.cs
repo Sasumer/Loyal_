@@ -9,6 +9,7 @@ using System.Reflection;
 using Web.Util;
 using System.IO;
 using Web.Security;
+using Web.ViewModel;
 
 namespace Web.Controllers
 {
@@ -279,5 +280,110 @@ namespace Web.Controllers
                 return View();
             }
         }
+
+        //ENTREGA FINAAAAAAAAAAAAAAALLL   =======================================================================================
+        public ActionResult EditarXOrden(string id) //Es llamado del Index (de Producto)
+        {
+            ServiceProducto _ServiceProducto = new ServiceProducto();
+            PRODUCTO producto = null;
+            try
+            {
+                // Si va null
+                if (id == null)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                producto = _ServiceProducto.GetProductoByID(id);
+                if (producto == null)
+                {
+                    TempData["Message"] = "No existe el producto solicitado";
+                    TempData["Redirect"] = "Producto";
+                    TempData["Redirect-Action"] = "Index";
+                    // Redireccion a la captura del Error
+                    return RedirectToAction("Default", "Error");
+                }
+                //sem 5: =============================
+                //ViewBag.IdTipoProducto = listaTipoProducto(producto.ID_TIPO_PRODUCTO);
+                ViewBag.IdProveedores = listaProveedores(producto.PROVEEDOR);
+                //listaProductoUbicaciones
+                ViewBag.IdUbicaciones = listaProductoUbicaciones(producto.PRODUCTO_UBICACION);
+                //fin sem 5===========================
+                return View(producto);
+            }
+            catch (Exception ex)
+            {
+                // Salvar el error en un archivo 
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["Message"] = "Error al procesar los datos! " + ex.Message;
+                TempData["Redirect"] = "Producto";
+                TempData["Redirect-Action"] = "Index";
+                // Redireccion a la captura del Error
+                return RedirectToAction("Default", "Error");
+            }
+        }
+        [HttpPost]
+        [CustomAuthorize((int)Roles.Administrador)]
+        public ActionResult SaveXOrden(PRODUCTO producto, string[] selectedProveedores, string[] selectedUbicaciones)
+        //AQUI SE ENVIAN LAS CATEGORIAS AL DropDownList EN Create.cshtml (string[] selectedCategorias).
+        {
+            MemoryStream target = new MemoryStream();
+            IServiceProducto _ServiceProducto = new ServiceProducto();
+            try
+            {
+                //// Cuando es Insert Image viene en null porque se pasa diferente
+                //if (producto.PHOTO == null)
+                //{
+                //    if (ImageFile != null)
+                //    {
+                //        ImageFile.InputStream.CopyTo(target);
+                //        producto.PHOTO = target.ToArray();
+                //        ModelState.Remove("PHOTO");
+                //    }
+
+                //}
+                //if (ModelState.IsValid)
+                //{
+                    PRODUCTO oLProductoI = _ServiceProducto.SaveXOrden(producto, selectedProveedores, selectedUbicaciones); //la logica la hacemos en el Repositorio
+                //}
+                //else
+                //{
+                //    // Valida Errores si Javascript está deshabilitado
+                //    Util.Util.ValidateErrors(this);
+                //    ViewBag.IdTipoProducto = listaTipoProducto(producto.ID_TIPO_PRODUCTO);
+                //    ViewBag.IdProveedores = listaProveedores(producto.PROVEEDOR);
+                //    //listaProductoUbicaciones
+                //    ViewBag.IdUbicaciones = listaProductoUbicaciones(producto.PRODUCTO_UBICACION);
+                //    return View("Create", producto);
+                //}
+                
+                //int cantidadLibros = Carrito.Instancia.Items.Count();
+                //ViewBag.NotiCarrito = Carrito.Instancia.AgregarItem(producto.ID);
+
+                //return PartialView("_OrdenCantidad");
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                // Salvar el error en un archivo 
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["Message"] = "Error al procesar los datos! " + ex.Message;
+                TempData["Redirect"] = "Libro";
+                TempData["Redirect-Action"] = "IndexAdmin";
+                // Redireccion a la captura del Error
+                return RedirectToAction("Default", "Error");
+            }
+        }
+        //Ordenar un libro y agregarlo al carrito
+        public ActionResult ordenarLibro(string idLibro)
+        {
+            int cantidadLibros = Carrito.Instancia.Items.Count();
+            ViewBag.NotiCarrito = Carrito.Instancia.AgregarItem(idLibro);
+
+            return PartialView("_OrdenCantidad");
+            //return RedirectToAction("Edit");
+
+        }
+
     }
 }
