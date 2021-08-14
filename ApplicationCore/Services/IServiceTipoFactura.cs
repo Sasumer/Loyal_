@@ -9,7 +9,7 @@ namespace ApplicationCore.Services
 {
     public interface IServiceTipoFactura
     {
-        IEnumerable<TIPO_FACTURA> GetTipoFacturao();
+        IEnumerable<TIPO_FACTURA> GetTipoFactura();
         TIPO_FACTURA GetTipoFacturaByID(int id);
     }
 }

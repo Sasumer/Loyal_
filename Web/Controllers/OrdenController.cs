@@ -21,6 +21,7 @@ namespace Web.Controllers
                 ViewBag.NotificationMessage = TempData["NotificationMessage"];
             }
             ViewBag.idCliente = listaClientes();
+            ViewBag.idTipoFactura = listaTipoFactura();
 
             ViewBag.DetalleOrden = Carrito.Instancia.Items;
             return View();
@@ -32,6 +33,15 @@ namespace Web.Controllers
             IEnumerable<USUARIO> listaClientes = _ServiceCliente.GetUSUARIO();
 
             return new SelectList(listaClientes, "ID", "Nombre");
+        }
+
+        private SelectList listaTipoFactura()
+        {
+            //Lista de Clientes
+            IServiceTipoFactura _ServiceTipo = new ServiceTipoFactura();
+            IEnumerable<TIPO_FACTURA> listatipos = _ServiceTipo.GetTipoFactura();
+
+            return new SelectList(listatipos, "ID", "DESCRIPCION");
         }
         //Actualizar Vista parcial detalle carrito
         private ActionResult DetalleCarrito()

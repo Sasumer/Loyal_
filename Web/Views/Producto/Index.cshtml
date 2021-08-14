@@ -7,7 +7,21 @@
 <h2 class="text-info">Productos</h2>
 <div class="row">
     <div class="col-lg-3">
-        @* Listado de autores *@
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Cantidad total de productos registrados: 
+                <span class="badge bg-primary rounded-pill">@ViewBag.countProducto</span>
+                @*<h3> @ViewBag.countProducto </h3>*@
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Cantidad de salidas registradas en el día:
+                <span class="badge bg-primary rounded-pill">@ViewBag.CountSalidas</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Cantidad de entradas registradas en el día:
+                <span class="badge bg-primary rounded-pill">@ViewBag.CountEntradas</span>
+            </li>
+        </ul>
     </div>
     <div class="col-lg-9">
         @* Listado de libros *@
@@ -21,12 +35,14 @@
                              alt="Imagen @Html.DisplayFor(modelItem => item.DESCRIPCION)" class="img-thumbnail" />
                         <div class="card-body">
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.DESCRIPCION)</h5>
-                            <h6 class="card-subtitle mb-2 text-muted"> @Html.DisplayNameFor(model => model.TIPO_PRODUCTO):
-                            @Html.DisplayFor(modelItem => item.TIPO_PRODUCTO.DESCRIPCION)</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                @Html.DisplayNameFor(model => model.TIPO_PRODUCTO):
+                                @Html.DisplayFor(modelItem => item.TIPO_PRODUCTO.DESCRIPCION)
+                            </h6>
                             <p class="card-text">   @Html.DisplayNameFor(model => model.PRECIO_VENTA):  @Html.DisplayFor(modelItem => item.PRECIO_VENTA)</p>
 
                             <div class="card-body">
-
+                                @*@Html.ActionLink("Ordenar", "EditarXOrden", new { id = item.ID })*@
                                 @Ajax.ActionLink("Ordenar",//Texto para el usuario
                                       "ordenarLibro",//Acción a llamar
                                       "Orden",

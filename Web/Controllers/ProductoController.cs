@@ -15,9 +15,55 @@ namespace Web.Controllers
 {
     public class ProductoController : Controller
     {
+        //public ActionResult ActionMethordNam()
+        //{
+        //    List<Systems> systems;
+        //    var query = db.SystemFamily.Select(c => c.SystemFamilyID).Tolist();
+        //    foreach (var sid in query)
+        //    {
+        //        systems = db.Systems.Select(c => c.SystemFamilyID == sid).Tolist();
+        //    }
+        //    int count = systems.Count();//Here you will  get count
+
+        //    Viewbag.Counts = count;
+        //    return View();
+        //}
         // GET: Producto
         public ActionResult Index()
         {
+            
+            int countProducto = 0;
+            int countSalidas = 0;
+            int countEntradas = 0;
+            //2 FORMA CON EL FOREACH: int conteo = 0;
+            using (MyContext ctx = new MyContext())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                var query = ctx.PRODUCTO.Select(c => c.ID).ToList();
+                //foreach (var sid in query)
+                //{
+                //    conteo++;
+                //}
+                //int count = listaPro.Count();
+                countProducto = query.Count();
+
+                
+                var salidas = ctx.ENC_FACTURA.Where(e => e.ID_TIPO_FACTURA == 1)
+                    .Select(c => c.ID)
+                    .ToList();
+                countSalidas = salidas.Count();
+
+                var entradas = ctx.ENC_FACTURA.Where(e => e.ID_TIPO_FACTURA == 2)
+                    .Select(c => c.ID)
+                    .ToList();
+                countEntradas = entradas.Count();
+            }
+            ViewBag.CountProducto = countProducto;
+            //ViewBag.Conteo = conteo;
+            ViewBag.CountSalidas = countSalidas;
+            ViewBag.CountEntradas = countEntradas;
+
+
             //elemento que contiene la lista
             IEnumerable<PRODUCTO> lista = null;
             try
@@ -357,11 +403,11 @@ namespace Web.Controllers
                 //    return View("Create", producto);
                 //}
                 
-                //int cantidadLibros = Carrito.Instancia.Items.Count();
-                //ViewBag.NotiCarrito = Carrito.Instancia.AgregarItem(producto.ID);
+                int cantidadLibros = Carrito.Instancia.Items.Count();
+                ViewBag.NotiCarrito = Carrito.Instancia.AgregarItem(producto.ID);
 
-                //return PartialView("_OrdenCantidad");
-                return RedirectToAction("Index");
+                return PartialView("_OrdenCantidad");
+                //return RedirectToAction("Index");
             }
             catch (Exception ex)
             {

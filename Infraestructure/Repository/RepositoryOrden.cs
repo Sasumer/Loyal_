@@ -88,35 +88,44 @@ namespace Infraestructure.Repository
                 // 2- OrdenDetalle 
                 using (MyContext ctx = new MyContext())
                 {
-                    using (var transaccion = ctx.Database.BeginTransaction())
-                    {
-                        ctx.ENC_FACTURA.Add(pOrden);
-                        resultado = ctx.SaveChanges();
-                        foreach (var detalle in pOrden.DETALLE_FACTURA)
-                        {
-                            detalle.ID_ENC_FACTURA = pOrden.ID;
-                        }
-                        foreach (var item in pOrden.DETALLE_FACTURA)
-                        {
-                            // Busco el producto que está en el detalle por IdLibro
-                            PRODUCTO oProducto = ctx.PRODUCTO.Find(item.ID_PRODUCTO);
+                    ctx.Configuration.LazyLoadingEnabled = false;
+                    //using (var transaccion = ctx.Database.BeginTransaction())
+                    //{
+                        
+                        
+                       
+                        //foreach (var item in pOrden.DETALLE_FACTURA)
+                        //{
+                        //    // Busco el producto que está en el detalle por IdLibro
+                        //    PRODUCTO oProducto = ctx.PRODUCTO.Find(item.ID_PRODUCTO);
 
-                            // Se indica que se alteró
-                            ctx.Entry(oProducto).State = EntityState.Modified;
-                            // Guardar                         
-                            resultado = ctx.SaveChanges();
-                        }
+                        //    // Se indica que se alteró
+                        //    ctx.Entry(oProducto).State = EntityState.Modified;
+                        //    // Guardar                         
+                        //    resultado = ctx.SaveChanges();
+                        //}
 
                         // Commit 
-                        transaccion.Commit();
-                    }
+                        ctx.ENC_FACTURA.Add(pOrden);
+                        resultado = ctx.SaveChanges();
+                    //    transaccion.Commit();
+                    //}
                 }
 
                 // Buscar la orden que se salvó y reenviarla
                 if (resultado >= 0)
                     orden = GetOrdenByID(pOrden.ID);
 
-
+                using (MyContext ctx = new MyContext())
+                {
+                    foreach (var detalle in pOrden.DETALLE_FACTURA)
+                    {
+                        detalle.ID_ENC_FACTURA = pOrden.ID;
+                        ctx.Entry(detalle).State = EntityState.Modified;
+                        //Guardar                         
+                        resultado = ctx.SaveChanges();
+                    }
+                }
                 return orden;
             }
             catch (DbUpdateException dbEx)

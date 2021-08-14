@@ -7,9 +7,9 @@
 <h2>Edit</h2>
 @* el va a buscar un metodo que se va a utilizar, por eso lo especificamos.// Por la imagen: "new { enctype..."  *@
 @*@using (Html.BeginForm("SaveXOrden", "Producto", FormMethod.Post))*@
-@*@using (Html.BeginForm("SaveXOrden", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
-@*  *@{
-@*@Html.AntiForgeryToken()*@
+@using (Html.BeginForm("SaveXOrden", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+@Html.AntiForgeryToken()
 
 <div class="form-horizontal">
     <h4>PRODUCTO</h4>
@@ -55,33 +55,35 @@ new { htmlAttributes = new { @class = "form-control" }, multiple = "multiple" })
         </div>
     </div>
     @* Fin sem 5 ============ *@
-    @*<div class="form-group">
+    <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Guardar y ordenar" class="btn btn-primary" />
             </div>
-        </div>*@
-    <div class="card-body">
+        </div>
+    @*<div class="card-body">*@
         @*@Html.ActionLink("Ordenar", "EditarXOrden", new { id = item.ID })*@
-        @Ajax.ActionLink("Ordenar",//Texto para el usuario
-            "ordenarLibro",//Acción a llamar
-            "Producto",
-            new
-            {
-                id = Model.ID
-            },//Parámetros a enviar
-            new AjaxOptions
-            {
-                UpdateTargetId = "cantidadLibros",
-                InsertionMode = InsertionMode.Replace,
-                HttpMethod = "GET",
-            }, new { @class = "btn btn-primary" }
-            )
-    </div>
+        @*@Ajax.ActionLink("Ordenar",//Texto para el usuario
+         "SaveXOrden",//Acción a llamar
+         "Producto",
+         new
+         {
+             idLibro = Model.ID,/*item.ID*/
+             Model.PROVEEDOR,
+             Model.PRODUCTO_UBICACION
+         },//Parámetros a enviar
+         new AjaxOptions
+         {
+             UpdateTargetId = "cantidadLibros",
+             InsertionMode = InsertionMode.Replace,
+             HttpMethod = "GET",
+         }, new { @class = "btn btn-primary" }
+         )
+    </div>*@
 </div>
 
 
 <div>
     @Html.ActionLink("Regresar a los productos", "Index")
 </div>
-
+}
 <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
