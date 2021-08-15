@@ -27,7 +27,14 @@ namespace ApplicationCore.Services
             IRepositoryOrden repository = new RepositoryOrden();
             return repository.Save(orden);
         }
-       
+        public void GetOrdenCountDate(out string etiquetas1, out string valores1)
+        {
+            IRepositoryOrden repository = new RepositoryOrden();
+
+            repository.GetOrdenCountDate(out string etiquetas, out string valores);
+            etiquetas1 = etiquetas;
+            valores1 = valores;
+        }
 
     }
 }

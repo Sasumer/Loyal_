@@ -22,5 +22,14 @@ namespace ApplicationCore.Services
             IRepositoryEncFactura repository = new RepositoryEncFactura();
             return repository.GetEncFacturaByID(id);
         }
+
+        //public void GetOrdenCountDate(out string etiquetas1, out string valores1)
+        //{
+        //    IRepositoryOrden repository = new RepositoryOrden();
+
+        //    repository.GetOrdenCountDate(out string etiquetas, out string valores);
+        //    etiquetas1 = etiquetas;
+        //    valores1 = valores;
+        //}
     }
 }

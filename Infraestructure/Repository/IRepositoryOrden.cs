@@ -12,5 +12,7 @@ namespace Infraestructure.Repository
         ENC_FACTURA GetOrdenByID(int id);
         IEnumerable<ENC_FACTURA> GetOrden();
         ENC_FACTURA Save(ENC_FACTURA orden);
+
+        void GetOrdenCountDate(out string etiquetas, out string valores);
     }
 }

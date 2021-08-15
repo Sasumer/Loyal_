@@ -12,7 +12,6 @@ namespace ApplicationCore.Services
         IEnumerable<ENC_FACTURA> GetEncFactura();
         ENC_FACTURA GetEncFacturaByID(int id);
 
-        //void DeleteLibro(int id);
-        //Libro Save(Libro libro, string[] selectedCategorias);
+        //void GetOrdenCountDate(out string etiquetas, out string valores);
     }
 }

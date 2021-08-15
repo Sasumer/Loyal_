@@ -12,5 +12,6 @@ namespace ApplicationCore.Services
         ENC_FACTURA GetOrdenByID(int id);
         IEnumerable<ENC_FACTURA> GetOrden();
         ENC_FACTURA Save(ENC_FACTURA pOrden);
+        void GetOrdenCountDate(out string etiquetas, out string valores);
     }
 }

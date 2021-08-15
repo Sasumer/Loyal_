@@ -328,6 +328,30 @@ namespace Web.Controllers
         }
 
         //ENTREGA FINAAAAAAAAAAAAAAALLL   =======================================================================================
+        [CustomAuthorize((int)Roles.Administrador, (int)Roles.Empleado)]
+        public ActionResult buscarLibroxNombre(string filtro)
+        {
+            IEnumerable<PRODUCTO> lista = null;
+            IServiceProducto _ServiceProducto = new ServiceProducto();
+
+            // Error porque viene en blanco 
+            if (string.IsNullOrEmpty(filtro))
+            {
+                lista = _ServiceProducto.GetProducto();
+            }
+            else
+            {
+                lista = _ServiceProducto.GetProductoByDescripcion(filtro);
+            }
+
+
+            // Retorna un Partial View
+            return PartialView("_PartialViewProductoAdmin", lista);
+        }
+
+
+
+        [CustomAuthorize((int)Roles.Administrador, (int)Roles.Empleado)]
         public ActionResult EditarXOrden(string id) //Es llamado del Index (de Producto)
         {
             ServiceProducto _ServiceProducto = new ServiceProducto();
@@ -369,7 +393,7 @@ namespace Web.Controllers
             }
         }
         [HttpPost]
-        [CustomAuthorize((int)Roles.Administrador)]
+        [CustomAuthorize((int)Roles.Administrador, (int)Roles.Empleado)]
         public ActionResult SaveXOrden(PRODUCTO producto, string[] selectedProveedores, string[] selectedUbicaciones)
         //AQUI SE ENVIAN LAS CATEGORIAS AL DropDownList EN Create.cshtml (string[] selectedCategorias).
         {

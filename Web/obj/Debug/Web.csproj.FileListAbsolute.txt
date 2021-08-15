@@ -528,3 +528,29 @@ C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\obj\Debug\Web.csprojAssemblyReferen
 C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\obj\Debug\Web.csproj.CopyComplete
 C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\obj\Debug\Web.dll
 C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\obj\Debug\Web.pdb
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\BouncyCastle.Crypto.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\Common.Logging.Core.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\Common.Logging.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.barcodes.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.forms.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.io.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.kernel.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.layout.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.pdfa.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.sign.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.styledxmlparser.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.svg.dll
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\BouncyCastle.Crypto.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\Common.Logging.pdb
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\Common.Logging.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\Common.Logging.Core.pdb
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\Common.Logging.Core.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.barcodes.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.forms.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.io.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.kernel.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.layout.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.pdfa.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.sign.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.styledxmlparser.xml
+C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.svg.xml

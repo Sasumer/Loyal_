@@ -162,7 +162,7 @@ namespace Infraestructure.Models
 
         //[Required(ErrorMessage = "El nombre es obligatorio")]
         //[MinLength(5, ErrorMessage = "El nombre debe tener al menos 5 caracteres")]
-        [Display(Name = "Nombre")]
+        [Display(Name = "Nombre Usuario")]
         public string Nombre { get; set; }
         [Display(Name = "Primer Apellido")]
         public string Apellido1 { get; set; }
@@ -188,7 +188,18 @@ namespace Infraestructure.Models
         public virtual ICollection<PROVEEDOR> PROVEEDOR { get; set; }
 
     }
+    internal partial class TipoFacturaMetadata
+    {
+        [Display(Name = "ID")]
+        public int ID { get; set; }
 
+        [Display(Name = "Descripcion")]
+        public string DESCRIPCION { get; set; }
+
+        [Display(Name = "Movimiento")]
+        public string MOVIMIENTO { get; set; }
+
+    }
 
 
 

@@ -224,7 +224,7 @@ namespace Web.Controllers
                     {
                         Session["User"] = oUsuario;
                         Log.Info($"Accede {oUsuario.Nombre} {oUsuario.Apellido1} "); //con el rol {oUsuario.USUARIO_ROL}");
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Producto");
                     }
                     else
                     {

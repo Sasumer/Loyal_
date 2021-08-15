@@ -7,8 +7,8 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             @*<li class="nav-item active">
-                @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" })
-            </li>*@
+            @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" })
+        </li>*@
             <li class="nav-item active">
                 @*1ro: texto que va a ver el user "Inicio"
             2do: la accion, el nombre del metodo "Index"
@@ -29,6 +29,13 @@
                     @Html.ActionLink("Entradas y salidas", "Index", "EncFactura", null, new { @class = "dropdown-item" })
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reportes</a>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("Catálogo Ordenes", "EncFacturaCatalogo", "Reporte", null, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Gráfico Cantidad Ordenes", "graficoOrden", "Orden", null, new { @class = "dropdown-item" })
+                </div>
+            </li>
             <li class="nav-item">
             <li class="nav-item">
                 @Html.ActionLink("Acerca de", "About", "Home", null, new { @class = "nav-link" })
@@ -41,9 +48,7 @@
                 @Html.Partial("_OrdenCantidad")
             </li>
 
-            @*<li class="nav-item">
-            @Html.ActionLink("Login", "Loguearse", "Home", null, new { @class = "nav-link" })
-        </li>*@
+           
 
             @* sem 7====================================================================================================================== *@
             @{
@@ -94,76 +99,3 @@
         </ul>
     </div>
 </nav>
-
-@*<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            Home
-                            <span class="visually-hidden">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>*@
-
-
-@*<nav id="Barra" class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">
-            <img src="icono.png" width="50" height="50" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01"  aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">Cliente</a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Principal <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button id="botonBarra"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                <button id="botonBarra"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Salir</button>
-            </form>
-        </div>
-    </nav>>*@

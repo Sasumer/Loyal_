@@ -25,6 +25,9 @@
         <th>
             @Html.DisplayNameFor(model => model.TIPO_FACTURA)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </th>
         <th></th>
     </tr>
 
@@ -41,8 +44,11 @@
         </td>
       
         <td>
-                @Html.DisplayFor(modelItem => item.TIPO_FACTURA.MOVIMIENTO)
-            </td>
+            @Html.DisplayFor(modelItem => item.TIPO_FACTURA.MOVIMIENTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentario)
+        </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Detalle", "Details", new { id=item.ID }) |
