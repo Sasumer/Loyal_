@@ -1,0 +1,24 @@
+﻿
+@model IEnumerable<Infraestructure.Models.PROVEEDOR>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_ORGAN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIRECCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PAIS)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Eleminar", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}

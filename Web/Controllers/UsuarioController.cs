@@ -20,6 +20,10 @@ namespace Web.Controllers
         {
             return View();
         }
+
+
+     
+        [CustomAuthorize((int)Roles.Administrador)]  
         public ActionResult IndexAdmin()
         {
             IEnumerable<USUARIO> lista = null;
@@ -41,6 +45,9 @@ namespace Web.Controllers
         }
         //FIN AMANDA===================================================================================
         // GET: Proveedor
+
+
+        [CustomAuthorize((int)Roles.Administrador), CustomAuthorize((int)Roles.Empleado)]
         public ActionResult Index()
         {
 
@@ -73,6 +80,7 @@ namespace Web.Controllers
 
 
         // GET: USUARIO/Details/5
+        [CustomAuthorize((int)Roles.Administrador), CustomAuthorize((int)Roles.Empleado)]
         public ActionResult Details(int? id)
         {
             ServiceUsuario _ServiceUSUARIO = new ServiceUsuario();
@@ -129,9 +137,7 @@ namespace Web.Controllers
 
         // POST: USUARIO/Create
         [HttpPost]
-        [CustomAuthorize((int)Roles.Administrador)]
-
-
+    
         public ActionResult Create(FormCollection collection)
         {
             try
@@ -150,6 +156,8 @@ namespace Web.Controllers
         [CustomAuthorize((int)Roles.Administrador)]
         public ActionResult Edit(int? id)
         {
+
+            ViewBag.IdRol = listaRol(null);
             ServiceUsuario _ServiceUsuario = new ServiceUsuario();
             USUARIO usuario = null;
             try
@@ -220,10 +228,11 @@ namespace Web.Controllers
 
                     oUsuario = _ServiceUsuario.GetLoginUsuario(usuario.ID, usuario.contrasenna);
 
-                    if (oUsuario != null)
+                    if (oUsuario != null && oUsuario.Activo==true)
                     {
                         Session["User"] = oUsuario;
                         Log.Info($"Accede {oUsuario.Nombre} {oUsuario.Apellido1} "); //con el rol {oUsuario.USUARIO_ROL}");
+                        TempData["mensaje"] = Util.SweetAlertHelper.Mensaje("Login", "Usario autenticado satisfactoriamente", SweetAlertMessageType.success);
                         return RedirectToAction("Index", "Producto");
                     }
                     else
@@ -300,11 +309,10 @@ namespace Web.Controllers
             try
             {
                 // TODO: Add update logic here
-
-
-
                 if (ModelState.IsValid)
                 {
+                    uSUARIO.Activo = false;
+                    uSUARIO.ID_ROL = 2;
                     USUARIO oUSUARIO = _ServiceUsuario.Save(uSUARIO);
                 }
                 else

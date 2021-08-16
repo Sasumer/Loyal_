@@ -213,5 +213,27 @@ namespace Web.Controllers
                 return View();
             }
         }
+
+
+        public ActionResult buscarLibroxNombre(string filtro)
+        {
+            IEnumerable<PROVEEDOR> lista = null;
+            IServiceProveedor _ServiceProveedor = new ServiceProveedor();
+
+            // Error porque viene en blanco 
+            if (string.IsNullOrEmpty(filtro))
+            {
+                lista = _ServiceProveedor.GetPROVEEDOR();
+            }
+            else
+            {
+                lista = _ServiceProveedor.GetNombrePROVEEDOR(filtro);
+            }
+
+
+            // Retorna un Partial View
+            return PartialView("_PartialViewProveedorAdmin", lista);
+        }
+
     }
 }

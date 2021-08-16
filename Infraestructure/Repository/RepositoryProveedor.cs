@@ -20,7 +20,14 @@ namespace Infraestructure.Repository
 
         public IEnumerable<PROVEEDOR> GetNombrePROVEEDOR(string nombre)
         {
-            throw new NotImplementedException();
+            IEnumerable<PROVEEDOR> lista = null;
+            using (MyContext ctx = new MyContext())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                lista = ctx.PROVEEDOR.ToList().
+                   FindAll(l => l.NOMBRE_ORGAN.ToLower().Contains(nombre.ToLower()));
+            }
+            return lista;
         }
 
         public IEnumerable<PROVEEDOR> GetPROVEEDOR()

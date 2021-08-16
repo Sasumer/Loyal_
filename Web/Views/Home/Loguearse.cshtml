@@ -11,51 +11,52 @@
     @Html.AntiForgeryToken()
 
 
-<body id="logeobody">
+    <body id="logeobody">
 
 
-    <div id="Recuadro">
-        <div id="imagen">
-            <img id="imagen" src="~/Content/logo.png">
-        </div>
-        <div id="bienvenida">
-            <p>Welcome Back!</p>
-        </div>
+        <div id="Recuadro">
+            <div id="imagen">
+                <img id="imagen" src="~/Content/logo.png">
+            </div>
+            <div id="bienvenida">
+                <p>Welcome Back!</p>
+            </div>
 
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "Cuest" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ID)
-            <div  class="col-md-10">
-                @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "Ingreso" } })
-                @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "Cuest" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.ID)
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "Ingreso" } })
+                    @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.contrasenna)
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.contrasenna, new { @class = "Ingreso" })
+                    @Html.ValidationMessageFor(model => model.contrasenna, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div id="botones">
+                <input id="login" type="submit" value="Log in" class="boton" />
+                <input type="submit" value="Sign up" class="boton" />
+            </div>
+
+            <div id="Term">
+                <label>Copr. 2000, 2016 Cofalia Informática SL Todos los derechos reservados.</label>
             </div>
         </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.contrasenna)
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.contrasenna, new { @class = "Ingreso" })
-                @Html.ValidationMessageFor(model => model.contrasenna, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
 
-        <div id="botones">
-            <input id="login" type="submit" value="Log in" class="boton" />
-            <input type="submit" value="Sign up" class="boton" />
-        </div>
-
-        <div id="Term">
-            <label>Copr. 2000, 2016 Cofalia Informática SL Todos los derechos reservados.</label>
-        </div>
-    </div>
-
-
-
-</body>
+    </body>
 }
 
 @section Scripts {

@@ -171,6 +171,7 @@ namespace Web.Controllers
                         ordenDetalle.ID_PRODUCTO = item.IdProducto;
                         ordenDetalle.PRECIO = item.Precio;
                         ordenDetalle.CANTIDAD = item.Cantidad;
+                        ordenDetalle.ID_UBICACION = "1";
                         orden.DETALLE_FACTURA.Add(ordenDetalle);
                     }
                 }

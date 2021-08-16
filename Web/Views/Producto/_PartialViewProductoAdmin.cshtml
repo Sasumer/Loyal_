@@ -17,10 +17,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.TIPO_PRODUCTO.DESCRIPCION)
         </td>
-         <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
-            </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
+        </td>
     </tr>
 }

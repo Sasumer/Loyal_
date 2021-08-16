@@ -9,10 +9,15 @@ namespace Web.ViewModel
 {
     public class ViewModelOrdenDetalle
     {
-        public int IdOrden { get; set; }
+
         public string IdProducto { get; set; }
         //public byte[] Imagen { get; set; }
         public int Cantidad { get; set; }
+
+        public string ubicacion { get; set; }
+
+
+
         public decimal? Precio
         {
             get { return Producto.PRECIO_VENTA; }

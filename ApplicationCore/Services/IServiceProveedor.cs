@@ -14,5 +14,6 @@ namespace ApplicationCore.Services
         PROVEEDOR GetPROVEEDORByID(int id);
 
         PROVEEDOR Save(PROVEEDOR pROVEEDOR, String[] selectedUsuarios);
+        IEnumerable<PROVEEDOR> GetNombrePROVEEDOR(string nombre);
     }
 }

@@ -10,6 +10,12 @@ namespace ApplicationCore.Services
 {
     public class ServiceProveedor : IServiceProveedor
     {
+        public IEnumerable<PROVEEDOR> GetNombrePROVEEDOR(string nombre)
+        {
+            IRepositoryProveedor repository = new RepositoryProveedor();
+            return repository.GetNombrePROVEEDOR(nombre);
+        }
+
         public IEnumerable<PROVEEDOR> GetPROVEEDOR()
         {
             IRepositoryProveedor repository = new RepositoryProveedor();

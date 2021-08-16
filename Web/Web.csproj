@@ -427,6 +427,7 @@
     <Content Include="Views\Producto\_PartialViewProductoAdmin.cshtml" />
     <Content Include="Views\Reporte\EncFacturaCatalogo.cshtml" />
     <Content Include="Views\Orden\graficoOrden.cshtml" />
+    <Content Include="Views\Proveedor\_PartialViewProveedorAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

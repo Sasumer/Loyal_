@@ -328,7 +328,7 @@ namespace Web.Controllers
         }
 
         //ENTREGA FINAAAAAAAAAAAAAAALLL   =======================================================================================
-        [CustomAuthorize((int)Roles.Administrador, (int)Roles.Empleado)]
+        [CustomAuthorize((int)Roles.Administrador)]
         public ActionResult buscarLibroxNombre(string filtro)
         {
             IEnumerable<PRODUCTO> lista = null;

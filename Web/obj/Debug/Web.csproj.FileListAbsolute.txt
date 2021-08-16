@@ -554,3 +554,29 @@ C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyect
 C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.sign.xml
 C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.styledxmlparser.xml
 C:\Users\amand\OneDrive\Escritorio\UTN\Progra en ambiente web II (Lunes)\Proyecto GitKraken\Loyal_\Web\bin\itext.svg.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\BouncyCastle.Crypto.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\Common.Logging.Core.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\Common.Logging.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.barcodes.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.forms.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.io.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.kernel.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.layout.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.pdfa.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.sign.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.styledxmlparser.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.svg.dll
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\BouncyCastle.Crypto.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\Common.Logging.pdb
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\Common.Logging.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\Common.Logging.Core.pdb
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\Common.Logging.Core.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.barcodes.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.forms.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.io.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.kernel.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.layout.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.pdfa.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.sign.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.styledxmlparser.xml
+C:\Users\Hogar\Documents\Proyecto\Loyal_\Web\bin\itext.svg.xml

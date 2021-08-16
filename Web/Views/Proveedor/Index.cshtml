@@ -9,43 +9,85 @@
 <p>
     @Html.ActionLink("Nuevo", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NOMBRE_ORGAN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DIRECCION)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PAIS)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NOMBRE_ORGAN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DIRECCION)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PAIS)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Eleminar", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div id="ajaxLoader" class="center-block" alt="Cargando ..." style="height:100px;width:100px; display:none">
+            <img src="~/Images/loading.gif" />
+        </div>
+        <h2 class="text-danger">Lista de Proveedores</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NOMBRE_ORGAN)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DIRECCION)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PAIS)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="resultado">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NOMBRE_ORGAN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DIRECCION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PAIS)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Eleminar", "Delete", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="card my-4">
+            <h5 class="card-header">Buscar proveedor por nombre</h5>
+            @using (Ajax.BeginForm("buscarLibroxNombre", "Proveedor", new AjaxOptions
+            {
+                UpdateTargetId = "resultado",
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "GET",
+                LoadingElementId = "ajaxLoader"
+            }))
+            {
+                <div class="card-body">
+                    <div class="input-group">
+                        @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Nombre Proveedor" })
+
+                        <button type="submit" class="btn btn-default">Buscar</button>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
 }
-
-</table>

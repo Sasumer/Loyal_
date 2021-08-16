@@ -61,14 +61,15 @@
                 {
                     @*@Html.DisplayFor(modelItem => c.UBICACION.DESCRIPCION)*@
                     @Html.EditorFor(modelItem => c.UBICACION.DESCRIPCION, new
-                        {
-                            htmlAttributes = new
-                            {
-                                @class = "form-control changeUbicacion",
-                                data_productoid = item.Producto.ID,
-                                onchange = "updateUbicacion(this)"
-                            }
-                        })
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control changeUbicacion",
+                       @readonly = "readonly",
+                                data_productoid = item.ubicacion,
+
+                   }
+               })
                 }
 
 
@@ -78,6 +79,11 @@
                 new { htmlAttributes = new { @class = "form-control" }, multiple = "multiple" })*@
 
             </div>
+
+
+
+
+
             @*</div>*@
         </td>
         <!--<td>-->
@@ -102,7 +108,7 @@
             {
            htmlAttributes = new
                 {
-                    @class = "form-control changeCantidad",
+                    @class = "form-control changeCantidad", 
            data_libroid = item.Producto.ID,
                     onchange = "updateCantidad(this)"
                 }
